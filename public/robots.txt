@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /webhook/
+Disallow: /payment/webhook/
+
+Sitemap: https://etelaf.org/sitemap.xml

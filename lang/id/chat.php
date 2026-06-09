@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'start_title' => 'Bagaimana kami dapat membantu Anda?',
+    'start_desc' => 'Selamat datang di obrolan langsung kami. Tinggalkan data Anda dan kami akan segera menghubungi Anda.',
+    'name_placeholder' => 'Nama Lengkap',
+    'email_placeholder' => 'Alamat Email',
+    'start_btn' => 'Mulai Obrolan',
+    'input_placeholder' => 'Ketik pesan Anda...',
+    'typing' => 'mengetik...',
+    'visitor_typing' => 'Pengunjung sedang mengetik...',
+    'end_chat' => 'Akhiri Obrolan',
+    'active' => 'Aktif',
+    'waiting' => 'Menunggu',
+    'closed' => 'Ditutup',
+    'online' => 'Daring',
+    'offline' => 'Luring',
+    'admin_title' => 'Dasbor Obrolan',
+    'select_session' => 'Pilih percakapan',
+    'select_session_desc' => 'Pilih sesi dari daftar untuk mulai mengobrol',
+    'search_placeholder' => 'Cari pengunjung...',
+    'no_sessions' => 'Tidak ada sesi obrolan',
+    'anonymous' => 'Pengunjung',
+    'page' => 'Halaman',
+];

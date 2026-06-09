@@ -1,0 +1,938 @@
+[2026-06-09 16:33:43] production.ERROR: Undefined variable $currentLocale (View: C:\Users\Hp\Desktop\etelaf-relief-laravel\resources\views\errors\404.blade.php) {"exception":"[object] (Illuminate\\View\\ViewException(code: 0): Undefined variable $currentLocale (View: C:\\Users\\Hp\\Desktop\\etelaf-relief-laravel\\resources\\views\\errors\\404.blade.php) at C:/Users/Hp/Desktop/etelaf-relief-laravel/storage/framework/views/734634b5b9d391de12447d1aae4d7127.php:7)
+[stacktrace]
+#0 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(58): Illuminate/View/Engines/CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(60): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->handleViewException(Object(ErrorException), 1)
+#2 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(22): Illuminate/View/Engines/PhpEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#3 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(75): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#4 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(10): Illuminate/View/Engines/CompilerEngine->get('C://Users//Hp//Des...', Array)
+#5 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(209): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->get('C://Users//Hp//Des...', Array)
+#6 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(192): Illuminate/View/View->getContents()
+#7 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(161): Illuminate/View/View->renderContents()
+#8 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(79): Illuminate/View/View->render()
+#9 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate/Http/Response->setContent(Object(Illuminate/View/View))
+#10 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(60): Illuminate/Http/Response->__construct(Object(Illuminate/View/View), 404, Array)
+#11 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(90): Illuminate/Routing/ResponseFactory->make(Object(Illuminate/View/View), 404, Array)
+#12 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(894): Illuminate/Routing/ResponseFactory->view('errors::404', Array, 404, Array)
+#13 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(815): Illuminate/Foundation/Exceptions/Handler->renderHttpException(Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#14 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(706): Illuminate/Foundation/Exceptions/Handler->prepareResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#15 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(594): Illuminate/Foundation/Exceptions/Handler->renderExceptionResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#16 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate/Foundation/Exceptions/Handler->render(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#17 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(172): Illuminate/Routing/Pipeline->handleException(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#18 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate/Pipeline/Pipeline->{closure:Illuminate/Pipeline/Pipeline::prepareDestination():168}(Object(Illuminate/Http/Request))
+#19 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Livewire/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware->handle(Object(Illuminate/Http/Request), Object(Closure))
+#20 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#21 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#23 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#24 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#25 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#27 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#29 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#31 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#33 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#35 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#36 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#37 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#38 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#39 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#40 C:/Users/Hp/Desktop/etelaf-relief-laravel/public/index.php(14): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#41 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Hp//Des...')
+#42 {main}
+
+[previous exception] [object] (ErrorException(code: 0): Undefined variable $currentLocale at C:/Users/Hp/Desktop/etelaf-relief-laravel/storage/framework/views/734634b5b9d391de12447d1aae4d7127.php:7)
+[stacktrace]
+#0 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(258): Illuminate/Foundation/Bootstrap/HandleExceptions->handleError(2, 'Undefined varia...', 'C://Users//Hp//Des...', 7)
+#1 C:/Users/Hp/Desktop/etelaf-relief-laravel/storage/framework/views/734634b5b9d391de12447d1aae4d7127.php(7): Illuminate/Foundation/Bootstrap/HandleExceptions->{closure:Illuminate/Foundation/Bootstrap/HandleExceptions::forwardsTo():257}(2, 'Undefined varia...', 'C://Users//Hp//Des...', 7)
+#2 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(123): require('C://Users//Hp//Des...')
+#3 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): Illuminate/Filesystem/Filesystem::{closure:Illuminate/Filesystem/Filesystem::getRequire():120}()
+#4 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate/Filesystem/Filesystem->getRequire('C://Users//Hp//Des...', Array)
+#5 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(22): Illuminate/View/Engines/PhpEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#6 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(75): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#7 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(10): Illuminate/View/Engines/CompilerEngine->get('C://Users//Hp//Des...', Array)
+#8 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(209): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->get('C://Users//Hp//Des...', Array)
+#9 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(192): Illuminate/View/View->getContents()
+#10 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(161): Illuminate/View/View->renderContents()
+#11 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(79): Illuminate/View/View->render()
+#12 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate/Http/Response->setContent(Object(Illuminate/View/View))
+#13 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(60): Illuminate/Http/Response->__construct(Object(Illuminate/View/View), 404, Array)
+#14 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(90): Illuminate/Routing/ResponseFactory->make(Object(Illuminate/View/View), 404, Array)
+#15 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(894): Illuminate/Routing/ResponseFactory->view('errors::404', Array, 404, Array)
+#16 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(815): Illuminate/Foundation/Exceptions/Handler->renderHttpException(Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#17 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(706): Illuminate/Foundation/Exceptions/Handler->prepareResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#18 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(594): Illuminate/Foundation/Exceptions/Handler->renderExceptionResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#19 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate/Foundation/Exceptions/Handler->render(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#20 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(172): Illuminate/Routing/Pipeline->handleException(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#21 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate/Pipeline/Pipeline->{closure:Illuminate/Pipeline/Pipeline::prepareDestination():168}(Object(Illuminate/Http/Request))
+#22 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Livewire/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware->handle(Object(Illuminate/Http/Request), Object(Closure))
+#23 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#24 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#25 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#27 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#29 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#30 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#32 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#33 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#34 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#35 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#36 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#37 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#38 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#39 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#40 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#41 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#42 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#43 C:/Users/Hp/Desktop/etelaf-relief-laravel/public/index.php(14): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#44 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Hp//Des...')
+#45 {main}
+"} 
+[2026-06-09 16:33:43] production.ERROR: Undefined variable $currentLocale (View: C:\Users\Hp\Desktop\etelaf-relief-laravel\resources\views\errors\404.blade.php) {"exception":"[object] (Illuminate\\View\\ViewException(code: 0): Undefined variable $currentLocale (View: C:\\Users\\Hp\\Desktop\\etelaf-relief-laravel\\resources\\views\\errors\\404.blade.php) at C:/Users/Hp/Desktop/etelaf-relief-laravel/storage/framework/views/734634b5b9d391de12447d1aae4d7127.php:7)
+[stacktrace]
+#0 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(58): Illuminate/View/Engines/CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(60): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->handleViewException(Object(ErrorException), 1)
+#2 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(22): Illuminate/View/Engines/PhpEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#3 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(75): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#4 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(10): Illuminate/View/Engines/CompilerEngine->get('C://Users//Hp//Des...', Array)
+#5 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(209): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->get('C://Users//Hp//Des...', Array)
+#6 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(192): Illuminate/View/View->getContents()
+#7 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(161): Illuminate/View/View->renderContents()
+#8 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(79): Illuminate/View/View->render()
+#9 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate/Http/Response->setContent(Object(Illuminate/View/View))
+#10 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(60): Illuminate/Http/Response->__construct(Object(Illuminate/View/View), 404, Array)
+#11 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(90): Illuminate/Routing/ResponseFactory->make(Object(Illuminate/View/View), 404, Array)
+#12 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(894): Illuminate/Routing/ResponseFactory->view('errors::404', Array, 404, Array)
+#13 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(815): Illuminate/Foundation/Exceptions/Handler->renderHttpException(Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#14 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(706): Illuminate/Foundation/Exceptions/Handler->prepareResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#15 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(594): Illuminate/Foundation/Exceptions/Handler->renderExceptionResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#16 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate/Foundation/Exceptions/Handler->render(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#17 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(172): Illuminate/Routing/Pipeline->handleException(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#18 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate/Pipeline/Pipeline->{closure:Illuminate/Pipeline/Pipeline::prepareDestination():168}(Object(Illuminate/Http/Request))
+#19 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Livewire/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware->handle(Object(Illuminate/Http/Request), Object(Closure))
+#20 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#21 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#22 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#23 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#24 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#25 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#27 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#29 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#31 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#33 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#35 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#36 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#37 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#38 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#39 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#40 C:/Users/Hp/Desktop/etelaf-relief-laravel/public/index.php(14): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#41 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Hp//Des...')
+#42 {main}
+
+[previous exception] [object] (ErrorException(code: 0): Undefined variable $currentLocale at C:/Users/Hp/Desktop/etelaf-relief-laravel/storage/framework/views/734634b5b9d391de12447d1aae4d7127.php:7)
+[stacktrace]
+#0 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(258): Illuminate/Foundation/Bootstrap/HandleExceptions->handleError(2, 'Undefined varia...', 'C://Users//Hp//Des...', 7)
+#1 C:/Users/Hp/Desktop/etelaf-relief-laravel/storage/framework/views/734634b5b9d391de12447d1aae4d7127.php(7): Illuminate/Foundation/Bootstrap/HandleExceptions->{closure:Illuminate/Foundation/Bootstrap/HandleExceptions::forwardsTo():257}(2, 'Undefined varia...', 'C://Users//Hp//Des...', 7)
+#2 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(123): require('C://Users//Hp//Des...')
+#3 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(124): Illuminate/Filesystem/Filesystem::{closure:Illuminate/Filesystem/Filesystem::getRequire():120}()
+#4 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(58): Illuminate/Filesystem/Filesystem->getRequire('C://Users//Hp//Des...', Array)
+#5 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(22): Illuminate/View/Engines/PhpEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#6 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(75): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->evaluatePath('C://Users//Hp//Des...', Array)
+#7 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(10): Illuminate/View/Engines/CompilerEngine->get('C://Users//Hp//Des...', Array)
+#8 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(209): Livewire/Mechanisms/ExtendBlade/ExtendedCompilerEngine->get('C://Users//Hp//Des...', Array)
+#9 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(192): Illuminate/View/View->getContents()
+#10 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/View/View.php(161): Illuminate/View/View->renderContents()
+#11 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(79): Illuminate/View/View->render()
+#12 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Response.php(35): Illuminate/Http/Response->setContent(Object(Illuminate/View/View))
+#13 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(60): Illuminate/Http/Response->__construct(Object(Illuminate/View/View), 404, Array)
+#14 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php(90): Illuminate/Routing/ResponseFactory->make(Object(Illuminate/View/View), 404, Array)
+#15 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(894): Illuminate/Routing/ResponseFactory->view('errors::404', Array, 404, Array)
+#16 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(815): Illuminate/Foundation/Exceptions/Handler->renderHttpException(Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#17 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(706): Illuminate/Foundation/Exceptions/Handler->prepareResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#18 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(594): Illuminate/Foundation/Exceptions/Handler->renderExceptionResponse(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#19 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(51): Illuminate/Foundation/Exceptions/Handler->render(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#20 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(172): Illuminate/Routing/Pipeline->handleException(Object(Illuminate/Http/Request), Object(Symfony/Component/HttpKernel/Exception/NotFoundHttpException))
+#21 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate/Pipeline/Pipeline->{closure:Illuminate/Pipeline/Pipeline::prepareDestination():168}(Object(Illuminate/Http/Request))
+#22 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Livewire/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware->handle(Object(Illuminate/Http/Request), Object(Closure))
+#23 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#24 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#25 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#27 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(51): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#28 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#29 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#30 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#31 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(110): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#32 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#33 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#34 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#35 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(58): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#36 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#37 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks.php(22): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#38 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(209): Illuminate/Foundation/Http/Middleware/InvokeDeferredCallbacks->handle(Object(Illuminate/Http/Request), Object(Closure))
+#39 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(127): Illuminate/Pipeline/Pipeline->{closure:{closure:Illuminate/Pipeline/Pipeline::carry():184}:185}(Object(Illuminate/Http/Request))
+#40 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#41 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#42 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1220): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#43 C:/Users/Hp/Desktop/etelaf-relief-laravel/public/index.php(14): Illuminate/Foundation/Application->handleRequest(Object(Illuminate/Http/Request))
+#44 C:/Users/Hp/Desktop/etelaf-relief-laravel/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('C://Users//Hp//Des...')
+#45 {main}
+"} 
+[2026-06-09 16:44:04] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 16:44:31] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 16:44:34] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 16:44:37] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:44:38] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:44:38] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 16:44:38] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:44:38] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:44:38] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:39] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 16:44:39] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 16:44:40] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 16:44:40] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 16:44:40] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 16:44:40] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:40] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:44:41] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:47:44] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 16:48:08] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 16:48:13] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 16:48:16] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:48:16] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:48:16] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 16:48:16] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:48:17] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:48:17] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:17] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 16:48:17] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 16:48:18] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 16:48:18] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 16:48:19] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:19] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:48:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:49:43] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 16:50:00] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 16:50:02] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 16:50:05] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:50:06] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:50:06] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 16:50:06] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:50:07] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:50:07] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:08] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 16:50:08] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 16:50:09] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 16:50:09] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 16:50:10] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:10] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:50:11] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:23] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 16:51:40] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 16:51:43] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 16:51:45] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:51:45] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:51:45] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 16:51:45] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:51:45] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:51:45] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:46] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 16:51:46] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 16:51:47] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 16:51:47] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 16:51:47] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:47] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:51:48] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:06] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 16:53:21] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 16:53:23] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 16:53:25] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:53:25] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:53:25] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 16:53:25] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:53:25] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:53:26] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:26] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 16:53:26] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 16:53:27] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 16:53:27] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 16:53:27] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:27] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:53:28] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:54:51] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 16:55:07] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 16:55:10] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 16:55:12] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:55:12] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:55:12] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 16:55:12] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 16:55:13] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 16:55:13] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:13] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 16:55:13] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 16:55:15] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 16:55:15] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 16:55:15] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 16:55:16] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:11:53] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 17:12:14] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 17:12:18] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 17:14:03] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 17:14:25] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 17:14:28] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 17:14:31] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:14:31] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:14:31] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 17:14:31] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:14:31] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:14:31] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:31] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 17:14:31] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 17:14:32] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 17:14:32] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 17:14:32] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 17:14:32] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:33] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:14:34] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:35:52] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 17:36:14] testing.WARNING: IdempotencyHelper: empty model class provided  
+[2026-06-09 17:36:16] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 17:36:19] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:36:19] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:36:19] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 17:36:19] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:36:19] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:36:20] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:20] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 17:36:20] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 17:36:21] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 17:36:21] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 17:36:21] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:21] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:36:22] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:32] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 17:46:43] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 17:46:44] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:46:44] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:46:44] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 17:46:44] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:46:44] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:46:45] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:45] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 17:46:45] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 17:46:46] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 17:46:46] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 17:46:46] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:46:46] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:47:46] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 17:47:59] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 17:48:01] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:48:01] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:48:01] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 17:48:01] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:48:01] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:48:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:01] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 17:48:01] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 17:48:03] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 17:48:03] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 17:48:04] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:48:04] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:51:36] testing.WARNING: No blockchain checker available for network {"network":"UnknownChain","id":1} 
+[2026-06-09 17:51:57] testing.ERROR: Stripe checkout session creation failed {"donation_id":1,"error":"Invalid API Key provided: sk_test_123"} 
+[2026-06-09 17:51:58] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:51:58] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:51:58] testing.CRITICAL: Wise webhook secret is not configured  
+[2026-06-09 17:51:59] testing.WARNING: Wise webhook: signature mismatch  
+[2026-06-09 17:51:59] testing.WARNING: Wise webhook: empty signature header  
+[2026-06-09 17:51:59] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:51:59] testing.WARNING: Stripe webhook: signature verification failed {"error":"Unable to extract timestamp and signatures from header"} 
+[2026-06-09 17:51:59] testing.WARNING: Stripe webhook: Stripe webhook: signature verification failed  
+[2026-06-09 17:52:01] testing.ERROR: PayPal getAccessToken failed {"status":401,"body":"{\"error\":\"invalid_client\",\"error_description\":\"Client Authentication failed\"}"} 
+[2026-06-09 17:52:01] testing.ERROR: PayPal verifyWebhook: failed to get access token {"error":"Failed to get PayPal access token"} 
+[2026-06-09 17:52:01] testing.CRITICAL: Stripe webhook secret is not configured  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  
+[2026-06-09 17:52:01] testing.WARNING: Stripe webhook: missing signature header  

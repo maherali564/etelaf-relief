@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'start_title' => 'How can we help you?',
+    'start_desc' => 'Welcome to our live chat. Leave your details and we will get back to you shortly.',
+    'name_placeholder' => 'Full Name',
+    'email_placeholder' => 'Email Address',
+    'start_btn' => 'Start Chat',
+    'input_placeholder' => 'Type your message...',
+    'typing' => 'typing...',
+    'visitor_typing' => 'Visitor is typing...',
+    'end_chat' => 'End Chat',
+    'active' => 'Active',
+    'waiting' => 'Waiting',
+    'closed' => 'Closed',
+    'online' => 'Online',
+    'offline' => 'Offline',
+    'admin_title' => 'Chat Dashboard',
+    'select_session' => 'Select a conversation',
+    'select_session_desc' => 'Choose a session from the list to start chatting',
+    'search_placeholder' => 'Search visitor...',
+    'no_sessions' => 'No chat sessions',
+    'anonymous' => 'Visitor',
+    'page' => 'Page',
+];

@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'start_title' => '¿Cómo podemos ayudarte?',
+    'start_desc' => 'Bienvenido a nuestro chat en vivo. Deja tus datos y te responderemos pronto.',
+    'name_placeholder' => 'Nombre Completo',
+    'email_placeholder' => 'Correo Electrónico',
+    'start_btn' => 'Iniciar Chat',
+    'input_placeholder' => 'Escribe tu mensaje...',
+    'typing' => 'escribiendo...',
+    'visitor_typing' => 'El visitante está escribiendo...',
+    'end_chat' => 'Finalizar Chat',
+    'active' => 'Activo',
+    'waiting' => 'Esperando',
+    'closed' => 'Cerrado',
+    'online' => 'En línea',
+    'offline' => 'Desconectado',
+    'admin_title' => 'Panel de Chat',
+    'select_session' => 'Selecciona una conversación',
+    'select_session_desc' => 'Elige una sesión de la lista para empezar a chatear',
+    'search_placeholder' => 'Buscar visitante...',
+    'no_sessions' => 'No hay sesiones de chat',
+    'anonymous' => 'Visitante',
+    'page' => 'Página',
+];

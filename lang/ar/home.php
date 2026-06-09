@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'hero_title' => 'معاً لدعم أهلنا النازحين',
+    'hero_subtitle' => 'نعمل من أجل تقديم الدعم الإنساني والإغاثي للأسر المتضررة في قطاع غزة',
+    'humanitarian_stats' => 'إحصائيات الأوضاع الإنسانية في غزة',
+    'stats_title' => 'إحصائيات ساهم',
+    'achievement_initiatives' => 'مبادرة إنسانية',
+    'achievement_partners' => 'شريكاً خارجياً',
+    'achievement_agreements' => 'اتفاقية تعاون',
+    'achievement_centers' => 'مركز توزيع',
+    'gaza_martyrs' => 'شهيد',
+    'gaza_injured' => 'مصاب',
+    'gaza_destroyed_homes' => 'منزل مدمر',
+    'gaza_missing' => 'مفقود',
+    'gaza_hospitals' => 'مستشفى خارج الخدمة',
+    'voices_waiting_title' => 'أصوات تنتظر الحياة',
+    'voices_waiting_desc' => 'قصص إنسانية تنتظر من يستمع إليها',
+    'our_programs' => 'برامجنا الإنسانية',
+    'our_programs_desc' => 'نعمل على عدة برامج إغاثية لتخفيف المعاناة',
+    'subscribe_title' => 'ابق على اطلاع',
+    'subscribe_desc' => 'اشترك في النشرة البريدية ليصلك كل جديد',
+    'quick_links' => 'روابط سريعة',
+    'follow_us' => 'تابعنا',
+];

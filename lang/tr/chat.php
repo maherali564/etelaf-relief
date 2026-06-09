@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'start_title' => 'Size nasıl yardımcı olabiliriz?',
+    'start_desc' => 'Canlı sohbetimize hoş geldiniz. Bilgilerinizi bırakın, en kısa sürede size dönüş yapacağız.',
+    'name_placeholder' => 'Ad Soyad',
+    'email_placeholder' => 'E-posta Adresi',
+    'start_btn' => 'Sohbeti Başlat',
+    'input_placeholder' => 'Mesajınızı yazın...',
+    'typing' => 'yazıyor...',
+    'visitor_typing' => 'Ziyaretçi yazıyor...',
+    'end_chat' => 'Sohbeti Sonlandır',
+    'active' => 'Aktif',
+    'waiting' => 'Bekliyor',
+    'closed' => 'Kapalı',
+    'online' => 'Çevrimiçi',
+    'offline' => 'Çevrimdışı',
+    'admin_title' => 'Sohbet Paneli',
+    'select_session' => 'Bir konuşma seçin',
+    'select_session_desc' => 'Sohbete başlamak için listeden bir oturum seçin',
+    'search_placeholder' => 'Ziyaretçi ara...',
+    'no_sessions' => 'Sohbet oturumu yok',
+    'anonymous' => 'Ziyaretçi',
+    'page' => 'Sayfa',
+];

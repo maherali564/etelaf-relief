@@ -1,0 +1,19 @@
+.fi-fo-file-upload .file-item .remove-btn {
+    background-color: #dc2626 !important;
+    color: white !important;
+    border-radius: 4px !important;
+    padding: 4px 8px !important;
+    font-size: 13px !important;
+    opacity: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+.fi-fo-file-upload .file-item .remove-btn::after {
+    content: "حذف" !important;
+    font-size: 12px !important;
+}
+.fi-fo-file-upload .file-item .remove-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+}

@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'hero_title' => 'Together to Support Our Displaced People',
+    'hero_subtitle' => 'We work to provide humanitarian and relief support to affected families in Gaza',
+    'humanitarian_stats' => 'Humanitarian Situation in Gaza',
+    'stats_title' => 'Sahem Statistics',
+    'achievement_initiatives' => 'Humanitarian Initiatives',
+    'achievement_partners' => 'External Partners',
+    'achievement_agreements' => 'Cooperation Agreements',
+    'achievement_centers' => 'Distribution Centers',
+    'gaza_martyrs' => 'Martyrs',
+    'gaza_injured' => 'Injured',
+    'gaza_destroyed_homes' => 'Destroyed Homes',
+    'gaza_missing' => 'Missing',
+    'gaza_hospitals' => 'Hospitals Out of Service',
+    'voices_waiting_title' => 'Voices Awaiting Life',
+    'voices_waiting_desc' => 'Human stories waiting to be heard',
+    'our_programs' => 'Our Humanitarian Programs',
+    'our_programs_desc' => 'We work on several relief programs to alleviate suffering',
+    'subscribe_title' => 'Stay Informed',
+    'subscribe_desc' => 'Subscribe to our newsletter for updates',
+    'quick_links' => 'Quick Links',
+    'follow_us' => 'Follow Us',
+];

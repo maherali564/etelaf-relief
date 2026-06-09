@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'hero_title' => 'Bersama Mendukung Pengungsi Kami',
+    'hero_subtitle' => 'Kami bekerja memberikan dukungan kemanusiaan kepada keluarga yang terkena dampak di Gaza',
+    'humanitarian_stats' => 'Situasi Kemanusiaan di Gaza',
+    'stats_title' => 'Statistik Sahem',
+    'achievement_initiatives' => 'Inisiatif kemanusiaan',
+    'achievement_partners' => 'Mitra eksternal',
+    'achievement_agreements' => 'Perjanjian kerja sama',
+    'achievement_centers' => 'Pusat distribusi',
+    'gaza_martyrs' => 'Syuhada',
+    'gaza_injured' => 'Terluka',
+    'gaza_destroyed_homes' => 'Rumah hancur',
+    'gaza_missing' => 'Hilang',
+    'gaza_hospitals' => 'Rumah sakit tidak berfungsi',
+    'voices_waiting_title' => 'Suara yang Menanti Kehidupan',
+    'voices_waiting_desc' => 'Kisah kemanusiaan yang menunggu untuk didengar',
+    'our_programs' => 'Program kemanusiaan kami',
+    'our_programs_desc' => 'Kami bekerja pada beberapa program bantuan untuk meringankan penderitaan',
+    'subscribe_title' => 'Tetap terinformasi',
+    'subscribe_desc' => 'Berlangganan buletin kami untuk pembaruan',
+    'quick_links' => 'Tautan cepat',
+    'follow_us' => 'Ikuti kami',
+];

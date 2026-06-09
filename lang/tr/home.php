@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'hero_title' => 'Yerinden Edilen Halkımızı Desteklemek İçin Birlikte',
+    'hero_subtitle' => 'Gazze\'deki etkilenen ailelere insani yardım sağlamak için çalışıyoruz',
+    'humanitarian_stats' => 'Gazze\'deki İnsani Durum',
+    'stats_title' => 'Sahem İstatistikleri',
+    'achievement_initiatives' => 'İnsani girişimler',
+    'achievement_partners' => 'Dış ortaklar',
+    'achievement_agreements' => 'İşbirliği anlaşmaları',
+    'achievement_centers' => 'Dağıtım merkezleri',
+    'gaza_martyrs' => 'Şehit',
+    'gaza_injured' => 'Yaralı',
+    'gaza_destroyed_homes' => 'Yıkılan ev',
+    'gaza_missing' => 'Kayıp',
+    'gaza_hospitals' => 'Hizmet dışı hastane',
+    'voices_waiting_title' => 'Yaşamı Bekleyen Sesler',
+    'voices_waiting_desc' => 'Dinlenmeyi bekleyen insan hikayeleri',
+    'our_programs' => 'İnsani Yardım Programlarımız',
+    'our_programs_desc' => 'Acıyı hafifletmek için çeşitli yardım programlarında çalışıyoruz',
+    'subscribe_title' => 'Bilgi Alın',
+    'subscribe_desc' => 'Güncellemeler için bültenimize abone olun',
+    'quick_links' => 'Hızlı bağlantılar',
+    'follow_us' => 'Bizi takip edin',
+];
