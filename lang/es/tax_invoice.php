@@ -8,7 +8,6 @@ return [
     'date' => 'Fecha',
     'donor_name' => 'Nombre del Donante',
     'transaction_id' => 'ID Transacción',
-    'campaign' => 'Campaña',
     'project' => 'Proyecto',
     'payment_method' => 'Método de Pago',
     'total_donated' => 'Total Donado',

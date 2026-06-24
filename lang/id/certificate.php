@@ -6,7 +6,6 @@ return [
     'seal' => 'S',
     'certifies' => 'Dengan ini menyatakan bahwa',
     'has_donated' => 'telah menyumbangkan',
-    'to_campaign' => 'untuk mendukung kampanye:',
     'to_project' => 'untuk mendukung proyek:',
     'to_story' => 'untuk mendukung cerita:',
     'on_date' => 'pada',

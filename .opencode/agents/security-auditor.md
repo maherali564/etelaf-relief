@@ -1,10 +1,10 @@
 ---
 description: خبير أمني يراجع الكود بحثاً عن ثغرات OWASP ومشاكل المدفوعات و Filament
-mode: plan
-tools:
-  read: true
-  edit: false
-  bash: false
+mode: subagent
+permission:
+  read: allow
+  edit: deny
+  bash: deny
 ---
 # Security Auditor Agent — ساهم (Sahem)
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Services\DonationService;
 use Illuminate\View\View;
 
 class ProjectController extends Controller
@@ -18,6 +19,10 @@ class ProjectController extends Controller
     {
         $project = Project::query()->where('slug', $slug)->active()->firstOrFail();
 
-        return view('projects.show', compact('project'));
+        $data = app(DonationService::class)->loadDonationPageData(projectId: $project->id);
+
+        $similar = Project::active()->where('id', '!=', $project->id)->limit(3)->get();
+
+        return view('projects.show', ['project' => $project, 'similar' => $similar, ...$data]);
     }
 }

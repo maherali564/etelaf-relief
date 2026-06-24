@@ -6,7 +6,6 @@ return [
     'seal' => 'C',
     'certifies' => 'Por la presente se certifica que',
     'has_donated' => 'ha donado',
-    'to_campaign' => 'para apoyar la campaña:',
     'to_project' => 'para apoyar el proyecto:',
     'to_story' => 'para apoyar la historia:',
     'on_date' => 'el',

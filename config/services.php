@@ -7,4 +7,7 @@ return [
     'bscscan' => [
         'api_key' => env('BSCSCAN_API_KEY', ''),
     ],
+    'gemini' => [
+        'api_key' => env('GEMINI_API_KEY'),
+    ],
 ];

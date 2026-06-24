@@ -31,6 +31,10 @@ class StatisticResource extends Resource
             Forms\Components\TextInput::make('value')->label(__('filament.resources.gaza_stat.column_value'))->numeric()->required(),
             Forms\Components\TextInput::make('prefix')->label(__('filament.resources.statistic.prefix'))->placeholder('+'),
             static::localeTabs('label', __('filament.resources.gaza_stat.column_label')),
+            Forms\Components\TextInput::make('icon')
+                ->label(__('filament.resources.statistic.icon'))
+                ->helperText(__('filament.resources.statistic.icon_helper'))
+                ->placeholder('hand-holding-heart'),
             Forms\Components\TextInput::make('sort_order')->label(__('filament.resources.gaza_stat.sort_order'))->numeric()->default(0),
             Forms\Components\Toggle::make('is_active')->label(__('filament.resources.user.column_active'))->default(true),
         ]);
@@ -42,6 +46,9 @@ class StatisticResource extends Resource
             Tables\Columns\TextColumn::make('type')->label(__('filament.resources.statistic.column_type'))->badge(),
             Tables\Columns\TextColumn::make('value')->label(__('filament.resources.gaza_stat.column_value')),
             Tables\Columns\TextColumn::make('label')->label(__('filament.resources.gaza_stat.column_label'))->formatStateUsing(fn ($state, $record) => $record?->getTranslation('label', 'ar') ?? ''),
+            Tables\Columns\TextColumn::make('icon')
+                ->label(__('filament.resources.statistic.icon'))
+                ->formatStateUsing(fn ($state) => $state ? $state : '—'),
             Tables\Columns\IconColumn::make('is_active')->boolean(),
         ])->defaultSort('sort_order')
             ->actions([Tables\Actions\EditAction::make(), Tables\Actions\DeleteAction::make()]);

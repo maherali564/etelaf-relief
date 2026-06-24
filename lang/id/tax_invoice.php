@@ -8,7 +8,6 @@ return [
     'date' => 'Tanggal',
     'donor_name' => 'Nama Donatur',
     'transaction_id' => 'ID Transaksi',
-    'campaign' => 'Kampanye',
     'project' => 'Proyek',
     'payment_method' => 'Metode Pembayaran',
     'total_donated' => 'Total Donasi',

@@ -52,6 +52,9 @@ it('logs webhook security warnings for invalid payloads', function () {
         ->atLeast(1)
         ->withArgs(fn ($message) => str_contains($message, 'Stripe webhook'));
 
+    Log::shouldReceive('error')
+        ->zeroOrMoreTimes();
+
     $response = $this->postJson('/webhook/stripe', ['test' => 'data'], [
         'Stripe-Signature' => 'bad_sig',
     ]);

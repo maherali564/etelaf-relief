@@ -9,11 +9,17 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('chat.{sessionId}', function ($user, $sessionId) {
-    if ($user) {
-        return true;
+    $session = ChatSession::find($sessionId);
+    if (! $session) {
+        return false;
     }
 
-    return Gate::allows('view', ChatSession::find($sessionId));
+    if ($user) {
+        return $user->can('view', $session)
+            || (int) $session->assigned_to === (int) $user->id;
+    }
+
+    return false;
 });
 
 Broadcast::channel('admin-chats', function ($user) {

@@ -5,13 +5,44 @@ namespace App\Services;
 use App\Models\Donation;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * 📌 DonationReviewService
+ * ──────────────────────────────────────────────────────────────
+ * 🎯 الغرض:
+ *    خدمة مراجعة التبرعات التي تتطلب تأكيداً يدوياً
+ *    (مثل التحويلات البنكية). توفر عمليات قبول التبرع
+ *    (تحويله إلى completed) أو رفضه (تحويله إلى failed)
+ *    مع تسجيل النشاط في سجل الحركات (Activity Log) وسجلات
+ *    النظام (Log) للأغراض الرقابية والتدقيق.
+ *
+ * 🔗 الاعتماديات:
+ *    - Donation (Model) ← التبرع المراد مراجعته
+ *    - activity() (Helper) ← تسجيل النشاط عبر spatie/laravel-activitylog
+ *    - Log (Facade) ← تسجيل عمليات القبول والرفض
+ * ──────────────────────────────────────────────────────────────
+ */
 class DonationReviewService
 {
     /**
-     * Approve a donation and mark it as completed
+     * ──────────────────────────────────────────────────────────
+     * 📌 approve
+     * ──────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    الموافقة على تبرع كان قيد المراجعة (under_review)
+     *    وتحويل حالته إلى completed. تسجل العملية في سجل
+     *    النشاط ونظام السجلات مع تفاصيل المشرف الموافق
+     *    والحالة القديمة والجديدة.
      *
-     * @param  Donation  $donation  The donation to approve
-     * @param  int  $adminId  The ID of the approving admin
+     * 📥 المدخلات:
+     *    - $donation: Donation ← كائن التبرع المراد الموافقة عليه
+     *    - $adminId: int ← معرف المشرف الذي قام بالموافقة
+     *
+     * 🔗 الاعتماديات:
+     *    - Donation::markCompleted() ← تحديث حالة التبرع
+     *    - activity() ← تسجيل النشاط عبر spatie package
+     *    - Log::info() ← تسجيل في سجل النظام
+     * ──────────────────────────────────────────────────────────
      */
     public function approve(Donation $donation, int $adminId): void
     {
@@ -32,11 +63,25 @@ class DonationReviewService
     }
 
     /**
-     * Reject a donation and mark it as failed
+     * ──────────────────────────────────────────────────────────
+     * 📌 reject
+     * ──────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    رفض تبرع كان قيد المراجعة وتحويل حالته إلى failed
+     *    مع إمكانية إضافة سبب الرفض. تسجل العملية في سجل
+     *    النشاط ونظام السجلات مع تفاصيل المشرف الرافض
+     *    والسبب.
      *
-     * @param  Donation  $donation  The donation to reject
-     * @param  string|null  $reason  Optional rejection reason
-     * @param  int  $adminId  The ID of the rejecting admin
+     * 📥 المدخلات:
+     *    - $donation: Donation ← كائن التبرع المراد رفضه
+     *    - $reason: string|null ← سبب الرفض (اختياري)
+     *    - $adminId: int ← معرف المشرف الذي قام بالرفض
+     *
+     * 🔗 الاعتماديات:
+     *    - Donation::markFailed() ← تحديث حالة التبرع إلى فاشل
+     *    - activity() ← تسجيل النشاط
+     *    - Log::info() ← تسجيل في سجل النظام
+     * ──────────────────────────────────────────────────────────
      */
     public function reject(Donation $donation, ?string $reason, int $adminId): void
     {

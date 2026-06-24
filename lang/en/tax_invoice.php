@@ -8,7 +8,6 @@ return [
     'date' => 'Date',
     'donor_name' => 'Donor Name',
     'transaction_id' => 'Transaction ID',
-    'campaign' => 'Campaign',
     'project' => 'Project',
     'payment_method' => 'Payment Method',
     'total_donated' => 'Total Donated',

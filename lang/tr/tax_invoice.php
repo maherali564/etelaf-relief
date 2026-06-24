@@ -8,7 +8,6 @@ return [
     'date' => 'Tarih',
     'donor_name' => 'BaÄŸÄ±ÅŸÃ§Ä± AdÄ±',
     'transaction_id' => 'Ä°ÅŸlem KimliÄŸi',
-    'campaign' => 'Kampanya',
     'project' => 'Proje',
     'payment_method' => 'Ã–deme YÃ¶ntemi',
     'total_donated' => 'Toplam BaÄŸÄ±ÅŸ',

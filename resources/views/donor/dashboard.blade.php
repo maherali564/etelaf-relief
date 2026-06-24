@@ -36,7 +36,7 @@
         <div style="padding:3rem;text-align:center;background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px">
             <i class="fas fa-heart" style="font-size:2rem;color:var(--color-text-muted);margin-bottom:1rem;display:block"></i>
             <p style="color:var(--color-text-muted)">{{ __('donor.no_donations') }}</p>
-            <a href="{{ route('home', ['locale' => $currentLocale]) . '#donate' }}" style="display:inline-block;margin-top:1rem;padding:10px 24px;background:var(--color-primary);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">{{ __('donate_now') }}</a>
+            <a href="{{ route('donate.page', ['locale' => $currentLocale]) }}" style="display:inline-block;margin-top:1rem;padding:10px 24px;background:var(--color-primary);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">{{ __('donate_now') }}</a>
         </div>
         @else
         <div style="overflow-x:auto">
@@ -56,8 +56,7 @@
                         <td style="padding:10px 8px">{{ $d->donated_at?->format('Y/m/d') ?: $d->created_at->format('Y/m/d') }}</td>
                         <td style="padding:10px 8px;font-weight:600" data-amount="{{ $d->amount }}">${{ number_format($d->amount, 0) }}</td>
                         <td style="padding:10px 8px">
-                            @if($d->campaign) {{ trans_field($d->campaign, 'title') }}
-                            @elseif($d->project) {{ trans_field($d->project, 'title') }}
+                            @if($d->project) {{ trans_field($d->project, 'title') }}
                             @elseif($d->story) {{ trans_field($d->story, 'title') }}
                             @elseif($d->post) {{ trans_field($d->post, 'title') }}
                             @else --

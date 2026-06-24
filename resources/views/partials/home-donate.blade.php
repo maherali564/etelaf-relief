@@ -1,25 +1,9 @@
 <section class="donate section" id="donate">
     <div class="container donate__inner {{ $isRtl ? 'donate__inner--rtl' : 'donate__inner--ltr' }}">
         <div class="donate__content {{ $isRtl ? 'donate__content--rtl' : 'donate__content--ltr' }}">
-            <span class="section-tag section-tag--light">{{ __('common.nav_donate') }}</span>
-            <h2 class="section-title section-title--light">{{ trans_field($s, 'donate_title') }}</h2>
-            <p class="donate__text">{{ trans_field($s, 'donate_description') }}</p>
-
-            @if($campaigns->isNotEmpty())
-            @foreach($campaigns as $campaign)
-            <div class="campaign-progress">
-                <h3>{{ trans_field($campaign, 'title') }}</h3>
-                <div class="progress-bar">
-                    <div class="progress-bar__fill" style="width: {{ $campaign->progressPercent() }}%"></div>
-                </div>
-                <div class="progress-stats">
-                    <span>{{ __('common.raised') }}: <strong><span data-amount="{{ $campaign->raised_amount }}">${{ number_format($campaign->raised_amount, 0) }}</span></strong></span>
-                    <span>{{ __('common.goal') }}: <strong>${{ number_format($campaign->goal_amount, 0) }}</strong></span>
-                    <span><strong>{{ $campaign->progressPercent() }}%</strong></span>
-                </div>
-            </div>
-            @endforeach
-            @endif
+            <div class="section-tag section-tag--light"><i class="fas fa-hand-holding-heart"></i> {{ __('home.donate_tag') }}</div>
+            <h2 class="section-title section-title--light">{{ __('home.donate_title') }}</h2>
+            <p class="section-desc" style="color:rgba(251,248,242,0.7);max-width:520px">{{ __('home.donate_desc') }}</p>
 
             <div class="donate__methods">
                 <h3>{{ __('common.payment_methods') }}</h3>

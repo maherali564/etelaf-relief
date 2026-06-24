@@ -44,6 +44,7 @@ class ConfirmationController extends Controller
         return redirect()->route('payment.success', [
             'locale' => $donation->locale,
             'donation' => $donation->id,
+            'token' => $donation->idempotency_key,
         ])->with('success', __('common.confirmation_received'));
     }
 }

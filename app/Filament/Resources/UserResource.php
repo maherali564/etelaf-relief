@@ -45,7 +45,7 @@ class UserResource extends Resource
             Forms\Components\Toggle::make('is_active')->label(__('filament.resources.user.column_active'))->default(true),
             Forms\Components\Toggle::make('can_chat')->label(__('filament.resources.user.can_chat'))->helperText(__('filament.resources.user.can_chat_hint')),
             Forms\Components\TextInput::make('phone')->label(__('filament.resources.volunteer.column_phone')),
-            FileUpload::make('avatar')->label(__('filament.resources.user.avatar'))->image()->directory('avatars')->nullable()
+            FileUpload::make('avatar')->label(__('filament.resources.user.avatar'))->image()->maxSize(2048)->directory('avatars')->nullable()
                 ->afterStateHydrated(function (FileUpload $component, $state) {
                     if (is_string($state) && filled($state)) {
                         $component->state([$state]);

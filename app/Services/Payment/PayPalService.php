@@ -7,12 +7,80 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use RuntimeException;
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * 🏦 خدمة: PayPalService
+ * ──────────────────────────────────────────────────────────────
+ * 🔗 البوابة: PayPal (https://www.paypal.com)
+ * 
+ * 🎯 الوظيفة:
+ *    تغليف كامل لبوابة الدفع PayPal، مسؤولة عن:
+ *    - الحصول على Access Token (OAuth 2.0)
+ *    - إنشاء طلبات الدفع (Orders API v2)
+ *    - تأكيد (Capture) الطلبات بعد موافقة المستخدم
+ *    - التحقق من تواقيع Webhook عبر PayPal Verification API
+ * 
+ * 📡 واجهة API المستخدمة:
+ *    - POST /v1/oauth2/token ← مصادقة العميل (Client Credentials)
+ *    - POST /v2/checkout/orders ← إنشاء طلب دفع
+ *    - POST /v2/checkout/orders/{id}/capture ← تأكيد الدفع
+ *    - POST /v1/notifications/verify-webhook-signature ← التحقق من Webhook
+ * 
+ * ⚙️ الإعدادات المطلوبة (config/services.php):
+ *    - 'client_id' ← معرف تطبيق PayPal
+ *    - 'client_secret' ← المفتاح السري للتطبيق
+ *    - 'webhook_id' ← معرف Webhook (للتحقق من التوقيع)
+ *    - 'mode' ← 'sandbox' للاختبار أو 'live' للإنتاج
+ * 
+ * 📤 تنسيق المخرجات:
+ *    - createOrder: string ← رابط موافقة الدفع (approval URL)
+ *    - captureOrder: array ← بيانات التأكيد من PayPal
+ *    - verifyWebhook: bool ← نجاح/فشل التحقق
+ * 
+ * ❌ استثناءات:
+ *    - RuntimeException ← فقدان إعدادات، فشل إنشاء الطلب، عدم وجود رابط دفع
+ * 
+ * 🔐 الأمان:
+ *    - Idempotency Key عبر PayPal-Request-Id header
+ *    - التحقق من Webhook عبر API مخصص (ليس مجرد توقيع محلي)
+ *    - مهلات زمنية (10s timeout, 5s connect timeout)
+ *    - تسجيل كامل للأخطاء مع تفاصيل الطلب
+ * ──────────────────────────────────────────────────────────────
+ */
 class PayPalService
 {
     protected array $config;
 
     protected string $baseUrl;
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: __construct
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تهيئة الخدمة بإعدادات PayPal وتحديد البيئة (sandbox/live)
+     * 
+     * 📥 المدخلات:
+     *    - $config: array ← مصفوفة الإعدادات
+     *      Required keys:
+     *        • 'client_id' (string) ← معرف تطبيق PayPal
+     *        • 'client_secret' (string) ← المفتاح السري
+     *      Optional keys:
+     *        • 'mode' (string) ← 'sandbox' (افتراضي) أو 'live'
+     *        • 'webhook_id' (string) ← معرف Webhook للتحقق
+     * 
+     * 📤 المخرجات:
+     *    - void
+     * 
+     * 💡 ملاحظات:
+     *    - يحدد baseUrl تلقائياً حسب mode:
+     *      • Sandbox: https://api-m.sandbox.paypal.com
+     *      • Live: https://api-m.paypal.com
+     * 
+     * ❌ الاستثناءات:
+     *    - RuntimeException ← إذا كان client_id أو client_secret فارغين
+     * ──────────────────────────────────────────────────────────────
+     */
     public function __construct(array $config)
     {
         if (empty($config['client_id']) || empty($config['client_secret'])) {
@@ -24,6 +92,38 @@ class PayPalService
             : 'https://api-m.sandbox.paypal.com';
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: getAccessToken
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    الحصول على Access Token من PayPal باستخدام OAuth 2.0
+     *    Client Credentials Grant. الرمز مطلوب لجميع استدعاءات API
+     *    الأخرى (إنشاء الطلب، التأكيد، التحقق من Webhook).
+     * 
+     * 📥 المدخلات:
+     *    - لا يوجد. يستخدم $this->config['client_id'] و
+     *      $this->config['client_secret'] الممررين في المُنشئ.
+     * 
+     * 📤 المخرجات:
+     *    - string ← Access Token (JWT) للاستخدام في الهيدير Authorization
+     * 
+     * 🔗 Endpoint:
+     *    - POST {baseUrl}/v1/oauth2/token
+     *    - Content-Type: application/x-www-form-urlencoded
+     *    - Auth: Basic (client_id:client_secret)
+     * 
+     * ⏱ مهلات زمنية:
+     *    - Timeout: 10 ثوانٍ للاستجابة
+     *    - Connect Timeout: 5 ثوانٍ للاتصال
+     * 
+     * ❌ الاستثناءات:
+     *    - RuntimeException ← إذا فشل الطلب أو لم يُرجع access_token
+     * 
+     * 🔐 تسجيل الأخطاء:
+     *    - يسجل حالة HTTP ورسالة الخطأ من PayPal إن وجدت
+     * ──────────────────────────────────────────────────────────────
+     */
     protected function getAccessToken(): string
     {
         $response = Http::timeout(10)->connectTimeout(5)->withBasicAuth(
@@ -36,7 +136,7 @@ class PayPalService
         if (! $response->successful()) {
             Log::error('PayPal getAccessToken failed', [
                 'status' => $response->status(),
-                'body' => $response->body(),
+                'error' => $response->json('error_description') ?? 'Unknown error',
             ]);
             throw new RuntimeException('Failed to get PayPal access token');
         }
@@ -45,12 +145,51 @@ class PayPalService
     }
 
     /**
-     * Create a PayPal order for a donation
-     *
-     * @param  Donation  $donation  The donation to create an order for
-     * @return string The PayPal approval URL to redirect the user to
-     *
-     * @throws RuntimeException If order creation fails
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: createOrder
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    إنشاء طلب دفع (Order) في PayPal للتبرع المحدد. يُعيد رابط
+     *    موافقة (approval URL) لتوجيه المستخدم إلى صفحة PayPal
+     *    لإتمام الدفع.
+     * 
+     * 📥 المدخلات:
+     *    - $donation: Donation ← التبرع المراد إنشاء الطلب له
+     *      • $donation->amount: float ← المبلغ
+     *      • $donation->currency: string ← العملة (USD, EUR, ...)
+     *      • $donation->donor_name: string ← اسم المتبرع
+     *      • $donation->locale: string ← اللغة
+     *      • $donation->idempotency_key: string|null ← مفتاح منع التكرار
+     * 
+     * 📤 المخرجات:
+     *    - string ← رابط PayPal لموافقة المستخدم (payer-action link)
+     *      يتم توجيه المستخدم إليه لإتمام الدفع
+     * 
+     * 🧾 الآثار الجانبية:
+     *    - تحديث $donation->transaction_id بـ Order ID من PayPal
+     *    - تسجيل بدء الدفع (Log::info)
+     * 
+     * 🔗 عناوين URL المستخدمة:
+     *    - return_url: route('payment.success', ...) ← بعد الدفع
+     *    - cancel_url: route('payment.cancel', ...) ← عند الإلغاء
+     *    ضمن experience_context في payment_source.paypal
+     * 
+     * 🔐 Idempotency:
+     *    - يستخدم PayPal-Request-Id header لمنع تكرار الطلب
+     *    - المفتاح من $donation->idempotency_key أو IdempotencyHelper
+     * 
+     * 📡 Endpoint:
+     *    - POST {baseUrl}/v2/checkout/orders
+     *    - Intent: CAPTURE (تأكيد فوري)
+     * 
+     * ❌ الاستثناءات:
+     *    - RuntimeException ← إذا فشل إنشاء الطلب
+     *    - RuntimeException ← إذا لم يُرجع PayPal Order ID
+     *    - RuntimeException ← إذا لم يوجد رابط payer-action
+     * 
+     * ⚙️ تنسيق المبلغ:
+     *    - يستخدم number_format($amount, 2) لضمان رقمين عشريين
+     * ──────────────────────────────────────────────────────────────
      */
     public function createOrder(Donation $donation): string
     {
@@ -79,8 +218,8 @@ class PayPalService
                 'payment_source' => [
                     'paypal' => [
                         'experience_context' => [
-                            'return_url' => route('payment.success', ['locale' => $donation->locale, 'donation' => $donation->id]),
-                            'cancel_url' => route('payment.cancel', ['locale' => $donation->locale, 'donation' => $donation->id]),
+                            'return_url' => route('payment.success', ['locale' => $donation->locale, 'donation' => $donation->id, 'token' => $donation->idempotency_key]),
+                            'cancel_url' => route('payment.cancel', ['locale' => $donation->locale, 'donation' => $donation->id, 'token' => $donation->idempotency_key]),
                         ],
                     ],
                 ],
@@ -115,12 +254,40 @@ class PayPalService
     }
 
     /**
-     * Capture an approved PayPal order
-     *
-     * @param  string  $orderId  The PayPal order ID
-     * @return array The capture response data
-     *
-     * @throws RuntimeException If capture fails
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: captureOrder
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تأكيد (Capture) طلب PayPal بعد موافقة المستخدم على الدفع.
+     *    تُستدعى بعد إعادة توجيه المستخدم من PayPal إلى
+     *    رابط النجاح (return_url).
+     * 
+     * 📥 المدخلات:
+     *    - $orderId: string ← معرف الطلب (Order ID) من PayPal
+     *      (مخزّن مسبقاً في $donation->transaction_id)
+     * 
+     * 📤 المخرجات:
+     *    - array ← بيانات الاستجابة من PayPal
+     *      تحتوي على:
+     *      • id: string ← معرف التأكيد
+     *      • status: string ← COMPLETED, PENDING, إلخ
+     *      • purchase_units[].payments.captures[].id ← معرف الدفعة
+     *      • purchase_units[].payments.captures[].amount ← المبلغ
+     * 
+     * 📡 Endpoint:
+     *    - POST {baseUrl}/v2/checkout/orders/{orderId}/capture
+     * 
+     * ⏱ مهلات زمنية:
+     *    - Timeout: 10 ثوانٍ
+     *    - Connect Timeout: 5 ثوانٍ
+     * 
+     * ❌ الاستثناءات:
+     *    - RuntimeException ← إذا فشل التأكيد (حالة HTTP غير ناجحة)
+     * 
+     * 💡 ملاحظة:
+     *    - يتطلب Access Token صالحاً (يُحصل عليه في كل مرة)
+     *    - يُسجّل تفاصيل الفشل مع Order ID وحالة HTTP
+     * ──────────────────────────────────────────────────────────────
      */
     public function captureOrder(string $orderId): array
     {
@@ -143,11 +310,45 @@ class PayPalService
     }
 
     /**
-     * Verify PayPal webhook signature using PayPal's verification API
-     *
-     * @param  string  $payload  The raw request body
-     * @param  array  $headers  Request headers (must include PAYPAL-AUTH-ALGO, etc.)
-     * @return bool True if the webhook is verified
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: verifyWebhook
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    التحقق من صحة طلب Webhook الوارد من PayPal باستخدام
+     *    PayPal Verification API. يضمن أن الطلب حقيقي من PayPal
+     *    ولم يتم التلاعب به.
+     * 
+     *    تختلف طريقة PayPal عن Stripe: PayPal يتطلب استدعاء API
+     *    خاص للتحقق (وليس مجرد تشفير محلي).
+     * 
+     * 📥 المدخلات:
+     *    - $payload: string ← نص الطلب الخام (raw request body) كـ JSON
+     *    - $headers: array ← هيديرات الطلب كاملة
+     *      المطلوبة للتحقق:
+     *      • PAYPAL-AUTH-ALGO ← خوارزمية التوقيع
+     *      • PAYPAL-CERT-URL ← رابط شهادة PayPal
+     *      • PAYPAL-TRANSMISSION-ID ← معرف الإرسال
+     *      • PAYPAL-TRANSMISSION-SIG ← التوقيع
+     *      • PAYPAL-TRANSMISSION-TIME ← وقت الإرسال
+     * 
+     * 📤 المخرجات:
+     *    - bool ← نجاح التحقق (true) أو فشله (false)
+     * 
+     * 📡 Endpoint:
+     *    - POST {baseUrl}/v1/notifications/verify-webhook-signature
+     *    - يُرسل الهيديرات الخمسة مع webhook_id والحدث
+     * 
+     * 🔐 عملية التحقق:
+     *    1. الحصول على Access Token
+     *    2. إرسال طلب POST إلى PayPal Verification API
+     *    3. التحقق من أن verification_status === 'SUCCESS'
+     *    4. إذا فشل، يُسجّل تحذير (Log::warning)
+     * 
+     * ❌ حالات الفشل (تُعيد false):
+     *    - إذا كان webhook_id غير مهيأ (يسجّل خطأ حرج)
+     *    - إذا فشل الحصول على Access Token
+     *    - إذا فشل طلب التحقق أو كانت الحالة غير SUCCESS
+     * ──────────────────────────────────────────────────────────────
      */
     public function verifyWebhook(string $payload, array $headers): bool
     {

@@ -1,10 +1,10 @@
 ---
 description: مهندس معماري يحلل المتطلبات ويكتب خطة تفصيلية قبل التنفيذ
-mode: plan
-tools:
-  read: true
-  edit: true
-  bash: false
+mode: subagent
+permission:
+  read: allow
+  edit: allow
+  bash: deny
 ---
 # Architect Agent — ساهم (Sahem)
 

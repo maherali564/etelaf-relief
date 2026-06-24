@@ -135,7 +135,7 @@
             <p><strong>{{ __('donate.status') }}:</strong> <span style="color:#d97706">{{ __('donate.status_pending') }}</span></p>
             @if($donation->project)<p><strong>{{ __('common.nav_projects') }}:</strong> {{ trans_field($donation->project, 'title') }}</p>@endif
             @if($donation->story)<p><strong>{{ __('common.nav_stories') }}:</strong> {{ trans_field($donation->story, 'title') }}</p>@endif
-            @if($donation->campaign)<p><strong>{{ __('common.nav_campaigns') }}:</strong> {{ trans_field($donation->campaign, 'title') }}</p>@endif
+
         </div>
     </div>
 </section>

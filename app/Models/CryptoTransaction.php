@@ -11,8 +11,8 @@ class CryptoTransaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'crypto_network_id', 'txid', 'from_address', 'to_address',
-        'amount', 'currency', 'matched_donation_id', 'status', 'raw_data',
+        'txid', 'from_address', 'to_address',
+        'amount', 'currency', 'status', 'raw_data',
     ];
 
     protected $casts = [

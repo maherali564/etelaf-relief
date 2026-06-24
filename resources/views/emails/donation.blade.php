@@ -33,7 +33,7 @@
                 <tr><td style="padding:8px;color:#64748b;">رقم العملية</td><td style="padding:8px;font-weight:bold;">{{ $donation->transaction_id }}</td></tr>
                 <tr><td style="padding:8px;color:#64748b;">التاريخ</td><td style="padding:8px;font-weight:bold;">{{ $donation->donated_at?->format('Y-m-d') ?: $donation->created_at->format('Y-m-d') }}</td></tr>
                 @if($donation->project)<tr><td style="padding:8px;color:#64748b;">المشروع</td><td style="padding:8px;font-weight:bold;">{{ trans_field($donation->project, 'title') }}</td></tr>@endif
-                @if($donation->campaign)<tr><td style="padding:8px;color:#64748b;">الحملة</td><td style="padding:8px;font-weight:bold;">{{ trans_field($donation->campaign, 'title') }}</td></tr>@endif
+
             </table>
 
             <a href="{{ route('home', ['locale' => $donation->locale]) }}" style="display:inline-block;background:#059669;color:#fff;padding:12px 30px;border-radius:8px;text-decoration:none;margin-top:20px;">العودة إلى الموقع</a>

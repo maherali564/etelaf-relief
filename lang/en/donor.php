@@ -33,6 +33,7 @@ return [
     'actions' => 'Actions',
     'certificate' => 'Certificate',
     'login_error' => 'Email or password is incorrect',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'nav_dashboard' => 'Donor Dashboard',
     'nav_register' => 'Register',
     'nav_login' => 'Donor Login',

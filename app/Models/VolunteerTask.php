@@ -11,7 +11,7 @@ class VolunteerTask extends Model
     use HasFactory;
 
     protected $fillable = [
-        'volunteer_opportunity_id', 'volunteer_id', 'title',
+        'title',
         'description', 'status', 'hours_logged',
         'started_at', 'completed_at', 'assigned_by',
     ];

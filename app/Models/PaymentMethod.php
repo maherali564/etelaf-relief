@@ -13,7 +13,7 @@ class PaymentMethod extends Model
 
     protected $fillable = [
         'name', 'name_translated', 'description', 'account_info', 'instructions', 'icon',
-        'gateway_id', 'is_active', 'sort_order',
+        'is_active', 'sort_order',
     ];
 
     protected $casts = [

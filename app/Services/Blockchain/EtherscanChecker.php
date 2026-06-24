@@ -71,8 +71,8 @@ class EtherscanChecker
                     continue;
                 }
 
-                $cryptoTx = CryptoTransaction::create([
-                    'crypto_network_id' => $network->id,
+                $cryptoTx = new CryptoTransaction();
+                $cryptoTx->fill([
                     'txid' => $txid,
                     'from_address' => $tx['from'] ?? null,
                     'to_address' => $tx['to'] ?? null,
@@ -81,6 +81,8 @@ class EtherscanChecker
                     'status' => 'pending',
                     'raw_data' => $tx,
                 ]);
+                $cryptoTx->crypto_network_id = $network->id;
+                $cryptoTx->save();
 
                 $this->matchAndConfirm($cryptoTx, $network);
             }

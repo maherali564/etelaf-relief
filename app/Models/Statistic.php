@@ -18,6 +18,7 @@ class Statistic extends Model
         'value',
         'prefix',
         'label',
+        'icon',
         'sort_order',
         'is_active',
     ];
@@ -39,10 +40,4 @@ class Statistic extends Model
         return $query->where('type', $type);
     }
 
-    public function formattedValue(): string
-    {
-        $formatted = number_format($this->value);
-
-        return ($this->prefix ?? '').$formatted;
-    }
 }

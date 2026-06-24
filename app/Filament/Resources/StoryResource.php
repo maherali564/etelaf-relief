@@ -28,9 +28,9 @@ class StoryResource extends Resource
         return $form->schema([
             static::localeTabs('title', __('filament.pages.manage_site_settings.about_title')),
             static::localeTabs('content', __('filament.pages.manage_site_settings.about_content'), 'richtext'),
-            Forms\Components\TextInput::make('person_name')->label(__('filament.resources.story.column_person')),
-            Forms\Components\TextInput::make('age')->label(__('filament.resources.story.age'))->numeric(),
-            Forms\Components\TextInput::make('location')->label(__('filament.resources.story.location')),
+            static::localeTabs('person_name', __('filament.resources.story.column_person')),
+            static::localeTabs('age', __('filament.resources.story.age')),
+            static::localeTabs('location', __('filament.resources.story.location')),
             Forms\Components\TextInput::make('goal_amount')->label(__('filament.resources.story.goal_amount'))->numeric()->default(0)->prefix('$'),
             Forms\Components\TextInput::make('raised_amount')->label(__('filament.resources.story.raised_amount'))->numeric()->default(0)->prefix('$'),
             Forms\Components\Section::make(__('filament.resources.story.section.images'))
@@ -55,12 +55,26 @@ class StoryResource extends Resource
                         ->removeUploadedFileButtonPosition('right')
                         ->helperText(__('filament.resources.story.images_hint')),
                 ])->columns(1),
-            Forms\Components\TextInput::make('video_url')->label(__('filament.resources.story.video_url'))->url()->placeholder('https://youtube.com/watch?v=... or /storage/videos/...')->nullable(),
-            Forms\Components\Select::make('video_type')->label(__('filament.resources.story.video_type'))->options([
-                'youtube' => 'YouTube',
-                'vimeo' => 'Vimeo',
-                'upload' => __('filament.resources.story.video_type_upload'),
-            ])->placeholder(__('filament.resources.story.video_type_auto'))->nullable(),
+            Forms\Components\Section::make(__('filament.resources.story.section.videos'))
+                ->schema([
+                    Forms\Components\TextInput::make('video_url')->label(__('filament.resources.story.video_url'))->url()->placeholder('https://youtube.com/watch?v=...')->nullable(),
+                    Forms\Components\Select::make('video_type')->label(__('filament.resources.story.video_type'))->options([
+                        'youtube' => 'YouTube',
+                        'vimeo' => 'Vimeo',
+                        'upload' => __('filament.resources.story.video_type_upload'),
+                    ])->placeholder(__('filament.resources.story.video_type_auto'))->nullable(),
+                    FileUpload::make('videos')
+                        ->label(__('filament.resources.story.videos'))
+                        ->multiple()
+                        ->reorderable()
+                        ->directory('stories/videos')
+                        ->acceptedFileTypes(['video/mp4', 'video/mpeg', 'video/quicktime', 'video/x-msvideo', 'video/x-matroska'])
+                        ->maxSize(102400)
+                        ->nullable()
+                        ->deleteUploadedFileUsing(fn ($file) => Storage::disk('public')->delete($file))
+                        ->removeUploadedFileButtonPosition('right')
+                        ->helperText(__('filament.resources.story.videos_hint')),
+                ])->columns(1),
             Forms\Components\TextInput::make('sort_order')->label(__('filament.resources.gaza_stat.sort_order'))->numeric()->default(0),
             Forms\Components\Toggle::make('is_active')->label(__('filament.resources.user.column_active'))->default(true),
         ]);

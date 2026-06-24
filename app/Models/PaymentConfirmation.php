@@ -11,7 +11,7 @@ class PaymentConfirmation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'donation_id', 'type', 'reference_number', 'amount', 'currency',
+        'type', 'reference_number', 'amount', 'currency',
         'sender_name', 'sender_account', 'transfer_date', 'notes',
         'proof_document', 'status', 'admin_notes', 'confirmed_at',
     ];

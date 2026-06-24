@@ -9,13 +9,52 @@ use App\Models\PaymentConfirmation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * 📌 ConfirmationService
+ * ──────────────────────────────────────────────────────────────
+ * 🎯 الغرض:
+ *    خدمة إدارة تأكيدات الدفع للتبرعات التي تتطلب تحويلاً
+ *    يدوياً (مثل التحويل البنكي أو Wise). تتولى تحميل بيانات
+ *    صفحة التأكيد، التحقق من صحة البوابة، وتقديم إثبات
+ *    الدفع (مستند التحويل) للمراجعة من قبل المشرفين.
+ *
+ * 🔗 الاعتماديات:
+ *    - Donation (Model) ← التبرع المراد تأكيده
+ *    - PaymentConfirmation (Model) ← سجل إثبات الدفع
+ *    - Cryptocurrency (Model) ← معلومات العملات الرقمية
+ *    - CryptoNetwork (Model) ← شبكات العملات الرقمية
+ *    - Log (Facade) ← تسجيل عمليات التأكيد
+ * ──────────────────────────────────────────────────────────────
+ */
 class ConfirmationService
 {
     /**
-     * Load data for the payment confirmation page
+     * ──────────────────────────────────────────────────────────
+     * 📌 loadConfirmationPage
+     * ──────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تجهيز جميع البيانات اللازمة لعرض صفحة تأكيد الدفع
+     *    للتبرع. تسترجع معلومات طريقة الدفع، البوابة،
+     *    الإعدادات، التعليمات، وفي حالة البوابة الرقمية
+     *    (crypto) تجلب قائمة العملات الرقمية والشبكات
+     *    المتاحة.
      *
-     * @param  Donation  $donation  The donation to confirm
-     * @return array Page data including payment method, gateway, and crypto info
+     * 📥 المدخلات:
+     *    - $donation: Donation ← كائن التبرع المراد تأكيده
+     *
+     * 📤 المخرجات:
+     *    - array ← تحتوي على:
+     *        'paymentMethod', 'gateway', 'config', 'instructions',
+     *        'driver', 'cryptocurrencies' (nullable),
+     *        'selectedNetwork' (nullable)
+     *
+     * 🔗 الاعتماديات:
+     *    - Cryptocurrency::with('networks')->active()->get()
+     *      ← جلب العملات النشطة مع الشبكات
+     *    - CryptoNetwork::with('cryptocurrency')->find()
+     *      ← الشبكة المختارة مسبقاً
+     * ──────────────────────────────────────────────────────────
      */
     public function loadConfirmationPage(Donation $donation): array
     {
@@ -43,10 +82,25 @@ class ConfirmationService
     }
 
     /**
-     * Validate that the donation's gateway supports confirmation flow
+     * ──────────────────────────────────────────────────────────
+     * 📌 validateGateway
+     * ──────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    التحقق من أن بوابة الدفع المرتبطة بالتبرع تدعم
+     *    تدفق التأكيد (أي تتطلب خطوة تأكيد يدوي). البوابات
+     *    المدعومة: bank_transfer, wise, crypto.
      *
-     * @param  Donation  $donation  The donation to validate
-     * @return string|null The gateway driver name, or null if not supported
+     * 📥 المدخلات:
+     *    - $donation: Donation ← كائن التبرع
+     *
+     * 📤 المخرجات:
+     *    - string|null ← اسم مشغل البوابة (driver) إذا كان
+     *      مدعوماً، أو null إذا لم يكن مدعوماً
+     *
+     * 🔗 الاعتماديات:
+     *    - Donation::paymentMethod (Relationship) ← العلاقة
+     *      مع طريقة الدفع
+     * ──────────────────────────────────────────────────────────
      */
     public function validateGateway(Donation $donation): ?string
     {
@@ -59,10 +113,24 @@ class ConfirmationService
     }
 
     /**
-     * Validate that the donation's gateway supports storing a confirmation
+     * ──────────────────────────────────────────────────────────
+     * 📌 validateStoreGateway
+     * ──────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    التحقق من أن بوابة الدفع تدعم تخزين إثبات الدفع
+     *    (رفع مستند). البوابات المدعومة: bank_transfer, wise
+     *    فقط (crypto لا يحتاج مستند تأكيد).
      *
-     * @param  Donation  $donation  The donation to validate
-     * @return string|null The gateway driver name, or null if not supported
+     * 📥 المدخلات:
+     *    - $donation: Donation ← كائن التبرع
+     *
+     * 📤 المخرجات:
+     *    - string|null ← اسم مشغل البوابة إذا كان مدعوماً
+     *      لتخزين التأكيد، أو null إذا لم يكن
+     *
+     * 🔗 الاعتماديات:
+     *    - Donation::paymentMethod (Relationship)
+     * ──────────────────────────────────────────────────────────
      */
     public function validateStoreGateway(Donation $donation): ?string
     {
@@ -75,11 +143,33 @@ class ConfirmationService
     }
 
     /**
-     * Submit a payment confirmation (bank transfer proof)
+     * ──────────────────────────────────────────────────────────
+     * 📌 submitConfirmation
+     * ──────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تقديم إثبات دفع (تحويل بنكي) لمراجعة المشرفين.
+     *    تنشئ سجلاً جديداً في جدول PaymentConfirmation مع
+     *    بيانات التحويل (رقم المرجع، المبلغ، اسم المحول،
+     *    تاريخ التحويل، إلخ) وترفق مستند الإثبات إذا وُجد.
+     *    تحديث حالة التبرع إلى 'under_review'.
      *
-     * @param  Donation  $donation  The donation being confirmed
-     * @param  array  $validated  Validated form data
-     * @param  Request|null  $request  Optional request for file upload
+     * 📥 المدخلات:
+     *    - $donation: Donation ← كائن التبرع المرتبط
+     *    - $validated: array ← البيانات المُحقق منها من النموذج:
+     *        reference_number, amount, currency, sender_name,
+     *        sender_account, transfer_date, notes
+     *    - $request: Request|null ← طلب HTTP اختياري لرفع
+     *      مستند الإثبات (proof_document)
+     *
+     * ❌ الاستثناءات:
+     *    - ValidationException ← قد ترميها Laravel إذا فشل
+     *      التحقق من صحة الملف المرفوع
+     *
+     * 🔗 الاعتماديات:
+     *    - PaymentConfirmation::save() ← حفظ إثبات الدفع
+     *    - Donation::update() ← تحديث حالة التبرع
+     *    - Log::info() ← تسجيل العملية
+     * ──────────────────────────────────────────────────────────
      */
     public function submitConfirmation(Donation $donation, array $validated, ?Request $request = null): void
     {
@@ -97,11 +187,13 @@ class ConfirmationService
         ];
 
         if ($request && $request->hasFile('proof_document')) {
-            $request->validate(['proof_document' => 'file|mimes:jpg,jpeg,png,pdf|max:10240']);
-            $data['proof_document'] = $request->file('proof_document')->store('confirmations', 'public');
+            $data['proof_document'] = $request->file('proof_document')->store('confirmations', 'private');
         }
 
-        PaymentConfirmation::create($data);
+        $confirmation = new PaymentConfirmation();
+        $confirmation->fill($data);
+        $confirmation->donation_id = $donation->id;
+        $confirmation->save();
 
         $donation->update([
             'status' => 'under_review',

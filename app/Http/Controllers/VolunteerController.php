@@ -13,13 +13,15 @@ class VolunteerController extends Controller
 {
     public function store(VolunteerStoreRequest $request): RedirectResponse
     {
-        $volunteer = Volunteer::create([
-            ...$request->validated(),
-            'locale' => app()->getLocale(),
-            'status' => 'pending',
-        ]);
+        $data = $request->validated();
+        $volunteer = new Volunteer();
+        $volunteer->fill($data);
+        $volunteer->volunteer_opportunity_id = $data['volunteer_opportunity_id'] ?? null;
+        $volunteer->locale = app()->getLocale();
+        $volunteer->status = 'pending';
+        $volunteer->save();
 
-        session()->flash('volunteer_id', $volunteer->id);
+        session()->put('volunteer_id', $volunteer->id);
 
         return back()->with('success', __('common.volunteer_success'));
     }
@@ -31,17 +33,6 @@ class VolunteerController extends Controller
 
         if ($volunteerId) {
             $volunteer = Volunteer::with('tasks')->find($volunteerId);
-        }
-
-        if (! $volunteer && $request->has('ref')) {
-            $volunteer = Volunteer::with('tasks')->find($request->query('ref'));
-        }
-
-        if (! $volunteer && $request->filled('email')) {
-            $volunteer = Volunteer::where('email', $request->input('email'))
-                ->with('tasks')
-                ->latest()
-                ->first();
         }
 
         $opportunities = VolunteerOpportunity::active()->get();

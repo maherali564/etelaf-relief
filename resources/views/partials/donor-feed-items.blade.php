@@ -6,9 +6,7 @@
     <div class="donor-entry__info">
         <strong class="donor-entry__name">{{ $donation->is_anonymous ? __('common.anonymous') : $donation->donor_name }}</strong>
         <span class="donor-entry__meta">
-            @if($donation->campaign)
-                {{ trans_field($donation->campaign, 'title') }}
-            @elseif($donation->project)
+            @if($donation->project)
                 {{ trans_field($donation->project, 'title') }}
             @elseif($donation->story)
                 {{ trans_field($donation->story, 'title') }}

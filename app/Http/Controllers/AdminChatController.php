@@ -12,11 +12,6 @@ class AdminChatController extends Controller
         private readonly ChatService $chatService
     ) {}
 
-    public function index()
-    {
-        return view('admin.chats.index');
-    }
-
     public function assign(AdminChatRequest $request)
     {
         $this->chatService->assignSession($request->session_id, Auth::user());

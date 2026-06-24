@@ -26,6 +26,12 @@ class AdminChatPanel extends Component
 
     public $isAdminTyping = false;
 
+    protected $rules = [
+        'message' => 'nullable|string|max:2000',
+        'search' => 'nullable|string|max:100',
+        'tab' => 'in:active,waiting,closed',
+    ];
+
     protected function getListeners()
     {
         return [
@@ -69,12 +75,14 @@ class AdminChatPanel extends Component
             $session->assignTo(Auth::user());
             event(new ChatStatusChanged($session, 'active', Auth::id()));
 
-            ChatMessage::create([
-                'chat_session_id' => $session->id,
-                'user_id' => Auth::id(),
+            $msg = new ChatMessage();
+            $msg->fill([
                 'message' => 'المشرف '.Auth::user()->name.' انضم إلى المحادثة',
                 'is_from_admin' => true,
             ]);
+            $msg->chat_session_id = $session->id;
+            $msg->user_id = Auth::id();
+            $msg->save();
 
             $this->refreshSessions();
         }
@@ -109,16 +117,20 @@ class AdminChatPanel extends Component
 
     public function sendMessage()
     {
+        $this->validateOnly('message');
+
         if (! $this->message || ! $this->activeSessionId) {
             return;
         }
 
-        ChatMessage::create([
-            'chat_session_id' => $this->activeSessionId,
-            'user_id' => Auth::id(),
+        $msg = new ChatMessage();
+        $msg->fill([
             'message' => $this->message,
             'is_from_admin' => true,
         ]);
+        $msg->chat_session_id = $this->activeSessionId;
+        $msg->user_id = Auth::id();
+        $msg->save();
 
         $this->messages[] = [
             'id' => time(),

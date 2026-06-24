@@ -8,7 +8,6 @@ return [
     'date' => 'التاريخ',
     'donor_name' => 'اسم المتبرع',
     'transaction_id' => 'رقم العملية',
-    'campaign' => 'الحملة',
     'project' => 'المشروع',
     'payment_method' => 'طريقة الدفع',
     'total_donated' => 'إجمالي التبرع',

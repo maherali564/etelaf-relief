@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campaign;
 use App\Models\Donation;
 use App\Models\Project;
 use Illuminate\Support\Facades\Cache;
@@ -30,18 +29,11 @@ class TransparencyController extends Controller
             'percent' => $p->progressPercent(),
         ]);
 
-        $campaignBreakdown = Campaign::active()->get()->map(fn ($c) => [
-            'title' => $c->title,
-            'raised' => $c->raised_amount,
-            'goal' => $c->goal_amount,
-            'percent' => $c->progressPercent(),
-        ]);
-
         $adminCostRate = 5; // 5% administrative costs
 
         return view('pages.transparency', compact(
             'totalRaised', 'totalDonations', 'totalDonors',
-            'projectBreakdown', 'campaignBreakdown', 'adminCostRate'
+            'projectBreakdown', 'adminCostRate'
         ));
     }
 }

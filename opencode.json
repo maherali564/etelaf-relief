@@ -1,0 +1,49 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "opencode-browser",
+    "D:/ponytail-main/ponytail-main/.opencode/plugins/ponytail.mjs"
+  ],
+  "mcp": {
+    "browsermcp": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@browsermcp/mcp@0.1.3"
+      ],
+      "enabled": true
+    }
+  },
+  "instructions": [
+    ".opencode/rules/*.md"
+  ],
+  "skills": {
+    "paths": [
+      ".opencode/skills"
+    ]
+  },
+  "command": {
+    "plan": {
+      "template": "ارسم خطة لإضافة ميزة جديدة. اشرح الجداول المطلوبة، العلاقات، الـ Services، المسارات، صفحات Filament، ومواقع الصفحات.",
+      "description": "طلب خطة معمارية لميزة جديدة",
+      "agent": "architect"
+    },
+    "review": {
+      "template": "قم بتحليل الكود في الملف المحدد. ركز على نقاط الضعف الشائعة في Laravel/Filament، وأخرج تقريراً مفصلاً بالأخطاء والتوصيات.",
+      "description": "مراجعة أمنية للملف المحدد",
+      "agent": "security-auditor"
+    },
+    "test": {
+      "template": "اكتب اختبارات Pest للكود في الملف المحدد. استخدم الـ Factories والـ Fakes لبوابات الدفع. تأكد من اختبار الحالات الناجحة والفاشلة والحالات الحافة.",
+      "description": "كتابة اختبارات Pest للملف المحدد",
+      "agent": "qa"
+    }
+  },
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      ".git/**"
+    ]
+  }
+}

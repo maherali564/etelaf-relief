@@ -1,6 +1,5 @@
 ---
 description: طلب خطة معمارية لميزة جديدة
-agent: architect
 ---
 # Command: plan — ساهم (Sahem)
 

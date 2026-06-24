@@ -33,6 +33,7 @@ return [
     'actions' => 'Ä°ÅŸlemler',
     'certificate' => 'Sertifika',
     'login_error' => 'E-posta veya ÅŸifre hatalÄ±',
+    'throttle' => 'Ã‡ok fazla giriÅŸ denemesi. LÃ¼tfen :seconds saniye sonra tekrar deneyin.',
     'nav_dashboard' => 'BaÄŸÄ±ÅŸÃ§Ä± Paneli',
     'nav_register' => 'Kaydol',
     'nav_login' => 'GiriÅŸ',

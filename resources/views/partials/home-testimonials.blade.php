@@ -30,20 +30,3 @@
 </section>
 @endif
 
-@if($faqs->isNotEmpty())
-<section class="faq section">
-    <div class="container">
-        <div class="section-header section-header--center">
-            <h2 class="section-title">{{ __('common.nav_faq') }}</h2>
-        </div>
-        <div class="faq__list">
-            @foreach($faqs as $faq)
-            <details class="faq__item">
-                <summary class="faq__question">{{ trans_field($faq, 'question') }}</summary>
-                <div class="faq__answer">{!! nl2br(e(trans_field($faq, 'answer'))) !!}</div>
-            </details>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif

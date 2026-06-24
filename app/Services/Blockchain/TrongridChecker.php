@@ -7,12 +7,10 @@ use App\Models\CryptoTransaction;
 use App\Models\Donation;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Config;
 
 class TrongridChecker
 {
-    const USDT_CONTRACT = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t';
-
-    const BASE_URL = 'https://api.trongrid.io';
 
     public function check(CryptoNetwork $network): void
     {
@@ -21,11 +19,11 @@ class TrongridChecker
             return;
         }
 
-        $contract = $network->contract_address ?: self::USDT_CONTRACT;
+        $contract = $network->contract_address ?: Config::get('blockchain.trongrid.usdt_contract');
         $since = $network->last_checked_at?->timestamp ?? (now()->subDay()->timestamp * 1000);
 
         try {
-            $response = Http::timeout(15)->get(self::BASE_URL.'/v1/accounts/'.$address.'/transactions/trc20', [
+            $response = Http::timeout(15)->get(Config::get('blockchain.trongrid.base_url').'/v1/accounts/'.$address.'/transactions/trc20', [
                 'contract_address' => $contract,
                 'min_timestamp' => $since * 1000,
                 'limit' => 50,
@@ -66,8 +64,8 @@ class TrongridChecker
                     continue;
                 }
 
-                $cryptoTx = CryptoTransaction::create([
-                    'crypto_network_id' => $network->id,
+                $cryptoTx = new CryptoTransaction();
+                $cryptoTx->fill([
                     'txid' => $txid,
                     'from_address' => $tx['from'] ?? null,
                     'to_address' => $tx['to'] ?? null,
@@ -76,6 +74,8 @@ class TrongridChecker
                     'status' => 'pending',
                     'raw_data' => $tx,
                 ]);
+                $cryptoTx->crypto_network_id = $network->id;
+                $cryptoTx->save();
 
                 $this->matchAndConfirm($cryptoTx, $network);
             }

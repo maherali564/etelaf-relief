@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path(env('FILAMENT_PATH', 'admin'))
+            ->path(config('filament.path', 'admin'))
             ->login()
             ->brandName(__('filament.brand'))
             ->favicon(asset('favicon.ico'))
@@ -89,8 +89,6 @@ class AdminPanelProvider extends PanelProvider
                     ->url(fn () => route('admin.locale', 'tr'))->sort(-2),
                 MenuItem::make()->label('Bahasa Indonesia')->icon('heroicon-o-language')
                     ->url(fn () => route('admin.locale', 'id'))->sort(-1),
-                MenuItem::make()->label('Svenska')->icon('heroicon-o-language')
-                    ->url(fn () => route('admin.locale', 'sv'))->sort(0),
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -107,5 +105,25 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    public function boot(): void
+    {
+        \Filament\Support\Facades\FilamentView::registerRenderHook(
+            \Filament\View\PanelsRenderHook::STYLES_AFTER,
+            fn () => '<style>
+                .fi-fo-file-upload .filepond--item {
+                    max-height: 200px !important;
+                    overflow: hidden;
+                    border-radius: 8px;
+                }
+                .fi-fo-file-upload .filepond--item video {
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                    display: block;
+                }
+            </style>',
+        );
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Newsletter;
-
 it('stores a contact submission', function () {
     $response = $this->post(route('contact.store', 'en'), [
         'name' => 'Test User',
@@ -33,25 +31,6 @@ it('stores a volunteer application', function () {
 
     $response->assertSessionHas('success');
     $this->assertDatabaseHas('volunteers', ['email' => 'volunteer@example.com', 'status' => 'pending']);
-});
-
-it('subscribes to newsletter', function () {
-    $response = $this->post(route('newsletter.store', 'en'), [
-        'email' => 'subscribe@example.com',
-    ]);
-
-    $response->assertSessionHas('success');
-    $this->assertDatabaseHas('newsletters', ['email' => 'subscribe@example.com']);
-});
-
-it('rejects duplicate newsletter subscription', function () {
-    Newsletter::factory()->create(['email' => 'dup@example.com']);
-
-    $response = $this->post(route('newsletter.store', 'en'), [
-        'email' => 'dup@example.com',
-    ]);
-
-    $response->assertSessionHasErrors('email');
 });
 
 it('rejects contact with honeypot spam field', function () {

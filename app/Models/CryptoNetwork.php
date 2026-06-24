@@ -10,7 +10,7 @@ class CryptoNetwork extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cryptocurrency_id', 'network_name', 'wallet_address', 'qr_code',
+        'network_name', 'wallet_address', 'qr_code',
         'contract_address', 'min_amount', 'processing_fee', 'explorer_url',
         'notes', 'last_checked_at', 'is_active',
     ];

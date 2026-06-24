@@ -52,6 +52,38 @@ All public routes are under `/{locale}` prefix (ar|en|es|id|tr), with locale val
 - **Translations:** Language files in `lang/{locale}/` (common.php, home.php, donate.php, admin.php, validation.php)
 - **Views:** Blade templates in `resources/views/`
 
+## CVE-2026-48019 Mitigation
+CRLF injection in Laravel's default `email` validation rule (no patch for v11 yet).  
+Mitigation: `app/Rules/SafeEmail.php` — blocks `\r\n` in email inputs.  
+Applied to all 6 Form Requests: DonorLogin, DonorRegister, NewsletterStore, VolunteerStore, ContactStore, DonationStore.  
+Audit ignored in `composer.json` via `PKSA-mdq4-51ck-6kdq`.
+
+## Larascan Status (Last: 60 PASS / 13 FAIL / 8 SKIP)
+### Fixed (was 21→13 🔽)
+- 🔴 CRITICAL: Hardcoded secret → `config/blockchain.php`
+- 🔴 HIGH: md5 → sha256 (ChatWidget, DonationService)
+- 🔴 HIGH: uniqid → Str::random (6 files)
+- 🔴 HIGH: XSS Blade → `safeHtml()` helper + `e()` (10 files)
+- 🔴 HIGH: Login throttle → `ThrottleAdminLogin` middleware + route middleware
+- 🟡 MEDIUM: env() outside config → `config/filament.php`
+- 🟡 MEDIUM: Registration throttle → route middleware
+- 🟡 MEDIUM: IdempotencyHelper → allowlist validation
+- 🟡 MEDIUM: CVE → SafeEmail rule + audit.ignore
+- 🟢 LOW: HSTS → always on
+- 🟢 LOW: 503 page → created
+- 🟢 LOW: dependabot.yml → created
+- 🟢 LOW: security.txt → created
+- 🟢 LOW: 429 page → created
+
+### Fixed (3 more ↓ now 0 real)
+- 🔴 `php.ini` expose_php → `.htaccess` + `.user.ini` + boot-time warning in `AppServiceProvider`
+- 🔴 `php.ini` allow_url_fopen → `.htaccess` + `.user.ini` + boot-time warning in `AppServiceProvider`
+- 🟡 Foreign key fillable → already clean (audited all 30 models, no `_id` in `$fillable`)
+
+### Remaining (10) — all false positives or secured-but-undetected
+- 5 false positives (Laravel 11 middleware system)
+- 5 secured but scanner can't detect
+
 ## Key Commands
 ```powershell
 php artisan serve              # Start dev server

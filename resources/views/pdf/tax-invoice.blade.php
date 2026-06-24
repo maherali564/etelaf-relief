@@ -42,7 +42,6 @@
             <tr><td>{{ __('tax_invoice.donor_name') }}</td><td>{{ $donation->is_anonymous ? __('common.anonymous') : $donation->donor_name }}</td></tr>
             <tr><td>{{ __('common.email') }}</td><td>{{ $donation->email }}</td></tr>
             <tr><td>{{ __('tax_invoice.transaction_id') }}</td><td>{{ $donation->transaction_id ?? 'TXN-' . $donation->id }}</td></tr>
-            @if($donation->campaign)<tr><td>{{ __('tax_invoice.campaign') }}</td><td>{{ trans_field($donation->campaign, 'title') }}</td></tr>@endif
             @if($donation->project)<tr><td>{{ __('tax_invoice.project') }}</td><td>{{ trans_field($donation->project, 'title') }}</td></tr>@endif
             <tr><td>{{ __('tax_invoice.payment_method') }}</td><td>{{ $donation->paymentMethod?->name ?? '-' }}</td></tr>
         </table>

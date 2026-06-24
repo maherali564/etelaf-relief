@@ -151,9 +151,7 @@
                 <p class="donor-name">{{ $donation->is_anonymous ? __('common.anonymous') : $donation->donor_name }}</p>
                 <p class="certifies">{{ __('certificate.has_donated') }}</p>
                 <p class="amount">${{ number_format($donation->amount, 2) }}</p>
-                @if($donation->campaign)
-                    <p class="detail">{{ __('certificate.to_campaign') }} {{ trans_field($donation->campaign, 'title') }}</p>
-                @elseif($donation->project)
+                @if($donation->project)
                     <p class="detail">{{ __('certificate.to_project') }} {{ trans_field($donation->project, 'title') }}</p>
                 @elseif($donation->story)
                     <p class="detail">{{ __('certificate.to_story') }} {{ trans_field($donation->story, 'title') }}</p>

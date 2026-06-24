@@ -1,6 +1,5 @@
 ---
 description: مراجعة أمنية للملف المحدد
-agent: security-auditor
 ---
 # Command: review — ساهم (Sahem)
 

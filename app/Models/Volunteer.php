@@ -13,11 +13,10 @@ class Volunteer extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'phone', 'national_id', 'date_of_birth', 'address',
+        'name', 'email', 'phone', 'date_of_birth', 'address',
         'emergency_contact_name', 'emergency_contact_phone', 'id_photo',
         'skills', 'availability', 'message', 'notes',
         'status', 'locale', 'approved_at', 'rejected_at', 'reviewed_by',
-        'volunteer_opportunity_id',
     ];
 
     protected function casts(): array

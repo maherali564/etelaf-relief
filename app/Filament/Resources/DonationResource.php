@@ -6,6 +6,7 @@ use App\Filament\Concerns\HasPermissionBasedAuthorization;
 use App\Filament\Resources\DonationResource\Pages;
 use App\Mail\DonationReceipt;
 use App\Models\Donation;
+use App\PDF\DonationReceiptPDF;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -17,6 +18,16 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
+/**
+ * ──────────────────────────────────────────────────────────────
+ * 📌 المورد: DonationResource
+ * ──────────────────────────────────────────────────────────────
+ * 🎯 الغرض:
+ *    إدارة التبرعات في لوحة التحكم (Filament).
+ *    يتيح عرض، تعديل، مراجعة، تصدير، وإعادة إرسال إيصالات
+ *    التبرعات مع دعم كامل للصلاحيات والترشيحات.
+ * ──────────────────────────────────────────────────────────────
+ */
 class DonationResource extends Resource
 {
     use HasPermissionBasedAuthorization;
@@ -25,16 +36,62 @@ class DonationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: canCreate
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    منع إنشاء تبرعات جديدة من لوحة التحكم؛ يتم الإنشاء
+     *    حصراً عبر واجهة المستخدم العامة.
+     *
+     * 📥 المدخلات:
+     *    - لا توجد
+     *
+     * 📤 المخرجات:
+     *    - bool ← false دائماً (التعطيل)
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function canCreate(): bool
     {
         return false;
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: getGloballySearchableAttributes
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تعطيل البحث العام في شريط Filament لبيانات التبرعات
+     *    الحساسة؛ لحماية الخصوصية ومنع تسرب المعلومات.
+     *
+     * 📥 المدخلات:
+     *    - لا توجد
+     *
+     * 📤 المخرجات:
+     *    - array ← مصفوفة فارغة (تعطيل البحث)
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function getGloballySearchableAttributes(): array
     {
         return [];
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: form
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تعريف نموذج عرض/تعديل التبرع في Filament.
+     *    يحتوي على أقسام: بيانات المتبرع، بيانات التبرع،
+     *    العلاقات، المراجعة، التأكيد، والإضافات.
+     *
+     * 📥 المدخلات:
+     *    - $form: Form ← كائن النموذج من Filament
+     *
+     * 📤 المخرجات:
+     *    - Form ← النموذج المزود بالمخطط (schema)
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function form(Form $form): Form
     {
         return $form->schema([
@@ -45,7 +102,7 @@ class DonationResource extends Resource
             ])->columns(3),
 
             Forms\Components\Section::make(__('filament.resources.donation.section.donation'))->schema([
-                Forms\Components\TextInput::make('amount')->label(__('filament.widgets.latest_donations.column_amount'))->numeric(),
+                Forms\Components\TextInput::make('amount')->label(__('filament.widgets.latest_donations.column_amount'))->numeric()->required()->minValue(0.01),
                 Forms\Components\TextInput::make('currency')->label(__('filament.resources.payment_confirmation.currency')),
                 Forms\Components\Select::make('payment_method_id')->label(__('filament.resources.donation.column_method'))->relationship('paymentMethod', 'name'),
                 Forms\Components\TextInput::make('transaction_id')->label(__('filament.resources.donation.transaction_id')),
@@ -62,9 +119,7 @@ class DonationResource extends Resource
             ])->columns(2),
 
             Forms\Components\Section::make(__('filament.resources.donation.section.relations'))->schema([
-                Forms\Components\Select::make('campaign_id')->label(__('filament.resources.donation.column_campaign'))->relationship('campaign', 'title')->nullable()->searchable(),
                 Forms\Components\Select::make('project_id')->label(__('filament.resources.donation.column_project'))->relationship('project', 'title')->nullable()->searchable(),
-                Forms\Components\Select::make('post_id')->label(__('filament.resources.donation.post'))->relationship('post', 'title')->nullable()->searchable(),
                 Forms\Components\Select::make('story_id')->label(__('filament.resources.donation.column_story'))->relationship('story', 'title')->nullable()->searchable(),
                 Forms\Components\Select::make('cryptocurrency_id')->label(__('filament.resources.crypto_network.column_crypto'))->relationship('cryptocurrency', 'name')->nullable()->searchable(),
                 Forms\Components\Select::make('crypto_network_id')->label(__('filament.resources.donation.crypto_network'))->relationship('cryptoNetwork', 'network_name')->nullable()->searchable(),
@@ -90,6 +145,23 @@ class DonationResource extends Resource
         ]);
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: table
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تعريف جدول التبرعات في Filament مع الأعمدة،
+     *    الترشيحات، الإجراءات الفردية والجماعية.
+     *    يتضمن: مراجعة، شهادة، إعادة إرسال الإيصال،
+     *    وتصدير CSV.
+     *
+     * 📥 المدخلات:
+     *    - $table: Table ← كائن الجدول من Filament
+     *
+     * 📤 المخرجات:
+     *    - Table ← الجدول المزود بالأعمدة والإجراءات
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function table(Table $table): Table
     {
         return $table->columns([
@@ -102,8 +174,16 @@ class DonationResource extends Resource
                 'paypal' => 'info',
                 'stripe' => 'success',
                 'bank_transfer' => 'warning',
+                'wise' => 'info',
                 'crypto' => 'danger',
                 default => 'gray',
+            })->formatStateUsing(fn ($state) => match ($state) {
+                'stripe' => __('filament.resources.payment_gateway.driver_stripe'),
+                'paypal' => __('filament.resources.payment_gateway.driver_paypal'),
+                'wise' => __('filament.resources.payment_gateway.driver_wise'),
+                'bank_transfer' => __('filament.resources.payment_confirmation.filter_type_bank'),
+                'crypto' => __('filament.resources.payment_confirmation.filter_type_crypto'),
+                default => $state,
             })->toggleable(),
             Tables\Columns\SelectColumn::make('status')->label(__('filament.widgets.latest_donations.column_status'))->options([
                 'pending' => __('filament.resources.donation.status_pending'),
@@ -121,6 +201,7 @@ class DonationResource extends Resource
                 ->formatStateUsing(fn ($state, $record) => $record?->reviewer?->name ?? '—')->toggleable(),
             Tables\Columns\TextColumn::make('reviewed_at')->label(__('filament.resources.donation.column_reviewed'))->dateTime()->sortable()->toggleable(),
             Tables\Columns\TextColumn::make('donated_at')->label(__('filament.resources.donation.filter_date'))->dateTime()->sortable()->toggleable(),
+            Tables\Columns\TextColumn::make('notes')->label(__('filament.resources.payment_confirmation.notes'))->limit(30)->toggleable(),
             Tables\Columns\TextColumn::make('created_at')->label(__('filament.resources.donation.column_created'))->dateTime()->sortable(),
         ])->defaultSort('created_at', 'desc')
             ->modifyQueryUsing(function (Builder $query) {
@@ -148,6 +229,15 @@ class DonationResource extends Resource
                 Tables\Filters\Filter::make('created_at')->label(__('filament.resources.donation.filter_date'))
                     ->form([Forms\Components\DatePicker::make('from'), Forms\Components\DatePicker::make('until')])
                     ->query(fn ($query, array $data) => $query->when($data['from'], fn ($q, $d) => $q->whereDate('created_at', '>=', $d))->when($data['until'], fn ($q, $d) => $q->whereDate('created_at', '<=', $d))),
+                Tables\Filters\Filter::make('amount_range')->label(__('filament.resources.donation.filter_amount'))
+                    ->form([
+                        Forms\Components\TextInput::make('amount_from')->label(__('filament.resources.donation.filter_amount_from'))->numeric()->prefix('$'),
+                        Forms\Components\TextInput::make('amount_to')->label(__('filament.resources.donation.filter_amount_to'))->numeric()->prefix('$'),
+                    ])
+                    ->query(fn ($query, array $data) => $query
+                        ->when($data['amount_from'], fn ($q, $d) => $q->where('amount', '>=', $d))
+                        ->when($data['amount_to'], fn ($q, $d) => $q->where('amount', '<=', $d))
+                    ),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make()->visible(fn () => auth()->user()->can('view_donation')),
@@ -179,6 +269,14 @@ class DonationResource extends Resource
                     ->color('info')
                     ->visible(fn ($record) => $record->status === 'completed')
                     ->url(fn ($record) => URL::route('payment.certificate', ['locale' => app()->getLocale(), 'donation' => $record]), shouldOpenInNewTab: true),
+                Tables\Actions\Action::make('receipt_preview')->label(__('filament.resources.donation.action_receipt'))
+                    ->icon('heroicon-o-eye')
+                    ->color('primary')
+                    ->visible(fn ($record) => $record->status === 'completed')
+                    ->action(function (Donation $record) {
+                        $pdf = app(DonationReceiptPDF::class);
+                        return $pdf->stream($record);
+                    }),
                 Tables\Actions\DeleteAction::make()->label(__('filament.resources.donation.action_delete'))->visible(fn () => auth()->user()->can('delete_donation')),
                 Tables\Actions\Action::make('resend_receipt')->label(__('filament.resources.donation.action_resend'))
                     ->icon('heroicon-o-envelope')
@@ -217,8 +315,8 @@ class DonationResource extends Resource
                             Donation::query()->orderByDesc('created_at')->chunk(200, function ($donations) use ($file) {
                                 foreach ($donations as $d) {
                                     fputcsv($file, [
-                                        $d->donor_name,
-                                        $d->email,
+                                        "\t".$d->donor_name,
+                                        "\t".$d->email,
                                         number_format($d->amount, 2),
                                         $d->paymentMethod?->name ?? '—',
                                         $d->status,
@@ -261,8 +359,8 @@ class DonationResource extends Resource
                                 ]);
                                 foreach ($records as $d) {
                                     fputcsv($file, [
-                                        $d->donor_name,
-                                        $d->email,
+                                        "\t".$d->donor_name,
+                                        "\t".$d->email,
                                         number_format($d->amount, 2),
                                         $d->paymentMethod?->name ?? '—',
                                         $d->status,
@@ -278,6 +376,20 @@ class DonationResource extends Resource
             ]);
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: getPages
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تعريف صفحات المورد: القائمة، التعديل، والعرض.
+     *
+     * 📥 المدخلات:
+     *    - لا توجد
+     *
+     * 📤 المخرجات:
+     *    - array ← مسارات الصفحات مع روابطها
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function getPages(): array
     {
         return [
@@ -287,21 +399,77 @@ class DonationResource extends Resource
         ];
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: getNavigationLabel
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تسمية عنصر التنقل في الشريط الجانبي.
+     *
+     * 📥 المدخلات:
+     *    - لا توجد
+     *
+     * 📤 المخرجات:
+     *    - string ← النص المترجم للتسمية
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function getNavigationLabel(): string
     {
         return __('filament.resources.donation.navigation_label');
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: getModelLabel
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تسمية المفرد للنموذج (للاستخدام في العناوين).
+     *
+     * 📥 المدخلات:
+     *    - لا توجد
+     *
+     * 📤 المخرجات:
+     *    - string ← النص المترجم للمفرد
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function getModelLabel(): string
     {
         return __('filament.resources.donation.label');
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: getPluralModelLabel
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تسمية الجمع للنموذج (للاستخدام في العناوين).
+     *
+     * 📥 المدخلات:
+     *    - لا توجد
+     *
+     * 📤 المخرجات:
+     *    - string ← النص المترجم للجمع
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function getPluralModelLabel(): string
     {
         return __('filament.resources.donation.plural_label');
     }
 
+    /**
+     * ──────────────────────────────────────────────────────────────
+     * 📌 الدالة: getNavigationGroup
+     * ──────────────────────────────────────────────────────────────
+     * 🎯 الغرض:
+     *    تحديد المجموعة التي ينتمي إليها المورد في الشريط الجانبي.
+     *
+     * 📥 المدخلات:
+     *    - لا توجد
+     *
+     * 📤 المخرجات:
+     *    - string ← اسم المجموعة المترجم
+     * ──────────────────────────────────────────────────────────────
+     */
     public static function getNavigationGroup(): string
     {
         return __('filament.nav.groups.campaigns_donations');

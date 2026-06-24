@@ -6,7 +6,6 @@ return [
     'seal' => 'B',
     'certifies' => 'Bu belge ile onaylanır ki',
     'has_donated' => 'bağışlamıştır',
-    'to_campaign' => 'kampanyasını desteklemek için:',
     'to_project' => 'projesini desteklemek için:',
     'to_story' => 'hikayesini desteklemek için:',
     'on_date' => 'tarihinde',

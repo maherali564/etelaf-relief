@@ -28,35 +28,5 @@ class Donor extends Authenticatable
         return $this->hasMany(Donation::class);
     }
 
-    public function getComputedTotalDonatedAttribute(): float
-    {
-        return (float) Cache::remember(
-            "donor.{$this->id}.total_donated",
-            300,
-            fn () => $this->donations()->completed()->sum('amount')
-        );
-    }
 
-    public function getComputedDonationCountAttribute(): int
-    {
-        return Cache::remember(
-            "donor.{$this->id}.donation_count",
-            300,
-            fn () => $this->donations()->completed()->count()
-        );
-    }
-
-    protected static function booted(): void
-    {
-        static::saved(function (Donor $donor) {
-            Cache::forget("donor.{$donor->id}.total_donated");
-            Cache::forget("donor.{$donor->id}.donation_count");
-        });
-    }
-
-    public function updateComputedStats(): void
-    {
-        Cache::forget("donor.{$this->id}.total_donated");
-        Cache::forget("donor.{$this->id}.donation_count");
-    }
 }

@@ -28,4 +28,9 @@ return [
     'partner_placeholder' => 'Socio',
     'cta_title' => 'Sé Parte del Cambio',
     'cta_desc' => 'Su donación hoy puede cambiar la vida de una familia entera. Únase a nosotros en el viaje de la generosidad.',
+    'nav_projects' => 'Proyectos',
+    'nav_news' => 'Noticias',
+    'raised' => 'Recaudado',
+    'goal' => 'de la meta',
+    'contribute' => 'Contribuir',
 ];

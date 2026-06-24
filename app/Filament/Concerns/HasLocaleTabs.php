@@ -15,21 +15,16 @@ trait HasLocaleTabs
         $locales = [
             'ar' => ['label' => 'العربية', 'dir' => 'rtl'],
             'en' => ['label' => 'English', 'dir' => 'ltr'],
-            'es' => ['label' => 'Español', 'dir' => 'ltr'],
-            'id' => ['label' => 'Bahasa Indonesia', 'dir' => 'ltr'],
-            'tr' => ['label' => 'Türkçe', 'dir' => 'ltr'],
-            'sv' => ['label' => 'Svenska', 'dir' => 'ltr'],
         ];
 
         return Tabs::make($field.'_tabs')
-            ->label($label)
-            ->tabs(collect($locales)->map(function ($meta, $locale) use ($field, $type) {
+            ->tabs(collect($locales)->map(function ($meta, $locale) use ($field, $type, $label) {
                 $name = "{$field}.{$locale}";
 
                 $input = match ($type) {
-                    'textarea' => Textarea::make($name)->label($meta['label'])->rows(4)->extraAttributes(['dir' => $meta['dir']]),
-                    'richtext' => RichEditor::make($name)->label($meta['label']),
-                    default => TextInput::make($name)->label($meta['label'])->extraAttributes(['dir' => $meta['dir']]),
+                    'textarea' => Textarea::make($name)->label("{$label} ({$meta['label']})")->rows(4)->extraAttributes(['dir' => $meta['dir']]),
+                    'richtext' => RichEditor::make($name)->label("{$label} ({$meta['label']})"),
+                    default => TextInput::make($name)->label("{$label} ({$meta['label']})")->extraAttributes(['dir' => $meta['dir']]),
                 };
 
                 return Tab::make($locale)->label($meta['label'])->schema([$input]);

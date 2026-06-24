@@ -11,15 +11,17 @@ class Story extends Model
 
     protected $fillable = [
         'title', 'content', 'person_name', 'age',
-        'location', 'image', 'images', 'video_url', 'goal_amount', 'raised_amount',
+        'location', 'image', 'images', 'video_url', 'videos', 'video', 'video_thumbnail', 'video_status',
+        'goal_amount', 'raised_amount',
         'is_active', 'sort_order',
     ];
 
-    public array $translatable = ['title', 'content'];
+    public array $translatable = ['title', 'content', 'person_name', 'age', 'location'];
 
     protected $casts = [
         'is_active' => 'boolean',
         'images' => 'array',
+        'videos' => 'array',
         'goal_amount' => 'decimal:2',
         'raised_amount' => 'decimal:2',
     ];

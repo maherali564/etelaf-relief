@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Story;
+use App\Services\DonationService;
 use Illuminate\View\View;
 
 class StoryController extends Controller
@@ -18,6 +19,10 @@ class StoryController extends Controller
     {
         $story = Story::active()->findOrFail($id);
 
-        return view('stories.show', compact('story'));
+        $data = app(DonationService::class)->loadDonationPageData(storyId: $story->id);
+
+        $similar = Story::active()->where('id', '!=', $story->id)->limit(3)->get();
+
+        return view('stories.show', ['story' => $story, 'similar' => $similar, ...$data]);
     }
 }

@@ -13,7 +13,7 @@
             <p><strong>{{ __('donate.donation_date') }}:</strong> {{ $donation->created_at->format('Y-m-d H:i') }}</p>
         </div>
         <div class="payment-actions">
-            <a href="{{ route('payment.certificate', ['locale' => $currentLocale, 'donation' => $donation->id]) }}" class="btn btn--primary">{{ __('common.download_certificate') }}</a>
+            <a href="{{ route('payment.certificate', ['locale' => $currentLocale, 'donation' => $donation->id, 'token' => request('token')]) }}" class="btn btn--primary">{{ __('common.download_certificate') }}</a>
             <a href="{{ route('home', ['locale' => $currentLocale]) }}" class="btn btn--primary btn--lg">{{ __('common.back_to_home') }}</a>
         </div>
     </div>

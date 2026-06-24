@@ -10,8 +10,6 @@ class ChatMessage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'chat_session_id',
-        'user_id',
         'visitor_token',
         'message',
         'is_from_admin',

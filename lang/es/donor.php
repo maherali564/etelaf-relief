@@ -33,6 +33,7 @@ return [
     'actions' => 'Acciones',
     'certificate' => 'Certificado',
     'login_error' => 'Correo o contraseña incorrectos',
+    'throttle' => 'Demasiados intentos de inicio de sesión. Intente de nuevo en :seconds segundos.',
     'nav_dashboard' => 'Panel del Donante',
     'nav_register' => 'Registrarse',
     'nav_login' => 'Iniciar Sesión',

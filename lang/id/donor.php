@@ -33,6 +33,7 @@ return [
     'actions' => 'Aksi',
     'certificate' => 'Sertifikat',
     'login_error' => 'Email atau kata sandi salah',
+    'throttle' => 'Terlalu banyak percobaan login. Silakan coba lagi dalam :seconds detik.',
     'nav_dashboard' => 'Dashboard Donatur',
     'nav_register' => 'Daftar',
     'nav_login' => 'Masuk',

@@ -11,6 +11,10 @@ class SiteSetting extends Model
 
     protected $casts = [
         'logos' => 'array',
+        'enabled_locales' => 'array',
+        'show_announcements' => 'boolean',
+        'show_success_stories' => 'boolean',
+        'show_donor_wall' => 'boolean',
     ];
 
     protected $fillable = [
@@ -32,8 +36,12 @@ class SiteSetting extends Model
         'facebook',
         'logo',
         'logos',
+        'enabled_locales',
         'hero_image',
         'about_image',
+        'show_announcements',
+        'show_success_stories',
+        'show_donor_wall',
     ];
 
     public array $translatable = [

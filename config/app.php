@@ -8,7 +8,7 @@ return [
     'timezone' => env('APP_TIMEZONE', 'Asia/Gaza'),
     'locale' => env('APP_LOCALE', 'ar'),
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
-    'supported_locales' => array_filter(explode(',', env('APP_SUPPORTED_LOCALES', 'ar,en,es,id,tr,sv'))),
+    'supported_locales' => array_filter(explode(',', env('APP_SUPPORTED_LOCALES', 'ar,en,es,id,tr'))),
     'faker_locale' => env('APP_FAKER_LOCALE', 'ar_SA'),
     'cipher' => 'AES-256-CBC',
     'key' => env('APP_KEY'),
@@ -17,6 +17,8 @@ return [
             explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
+    'ffmpeg_path' => env('FFMPEG_PATH'),
+
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),

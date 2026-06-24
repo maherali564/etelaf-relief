@@ -6,7 +6,6 @@ return [
     'seal' => 'ش',
     'certifies' => 'يشهد المركز بأن',
     'has_donated' => 'قد تبرع بمبلغ',
-    'to_campaign' => 'لدعم حملة:',
     'to_project' => 'لدعم مشروع:',
     'to_story' => 'لدعم قصة:',
     'on_date' => 'بتاريخ',

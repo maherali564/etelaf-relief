@@ -21,9 +21,9 @@
         window.Pusher = Pusher;
         window.Echo = new Echo({
             broadcaster: 'reverb',
-            key: '{{ config('reverb.apps.default.app_key') }}',
-            wsHost: '{{ config('reverb.apps.default.host') }}',
-            wsPort: '{{ config('reverb.apps.default.port') }}',
+            key: @json(config('reverb.apps.default.app_key')),
+            wsHost: @json(config('reverb.apps.default.host')),
+            wsPort: @json(config('reverb.apps.default.port')),
             forceTLS: false,
             enabledTransports: ['ws', 'wss'],
         });

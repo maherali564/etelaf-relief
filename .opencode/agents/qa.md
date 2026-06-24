@@ -1,10 +1,10 @@
 ---
 description: متخصص في جودة الكود والاختبارات والتغطية
-mode: build
-tools:
-  read: true
-  edit: true
-  bash: true
+mode: subagent
+permission:
+  read: allow
+  edit: allow
+  bash: allow
 ---
 # QA Agent — ساهم (Sahem)
 

@@ -32,11 +32,6 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>{{ url($locale . '/news') }}</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>{{ url($locale . '/stories') }}</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -44,13 +39,6 @@
     @foreach($projects as $project)
     <url>
         <loc>{{ url($locale . '/projects/' . $project->slug) }}</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    @endforeach
-    @foreach($posts as $post)
-    <url>
-        <loc>{{ url($locale . '/news/' . $post->slug) }}</loc>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>

@@ -1,6 +1,5 @@
 ---
 description: كتابة اختبارات Pest للملف المحدد
-agent: qa
 ---
 # Command: test — ساهم (Sahem)
 

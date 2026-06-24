@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Campaign;
 use App\Models\Donation;
 use App\Models\Donor;
 use App\Models\PaymentGateway;
@@ -74,12 +73,10 @@ it('detects online payment method', function () {
 
 it('loads donation page data with caching', function () {
     Project::factory()->create(['is_active' => true]);
-    Campaign::factory()->create(['is_active' => true]);
-
     $service = new DonationService;
     $data = $service->loadDonationPageData();
 
-    expect($data)->toHaveKeys(['paymentMethods', 'campaigns', 'projects', 'stories', 'cryptocurrencies', 'donations']);
+    expect($data)->toHaveKeys(['paymentMethods', 'projects', 'stories', 'cryptocurrencies', 'donations']);
 });
 
 it('initiates payment with retry logic', function () {

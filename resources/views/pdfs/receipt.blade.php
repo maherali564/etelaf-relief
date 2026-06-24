@@ -33,7 +33,7 @@
             <tr><td>الحالة</td><td><span class="status completed">مكتمل</span></td></tr>
             <tr><td>طريقة الدفع</td><td>{{ $payment_method ?? '—' }}</td></tr>
             @if($project)<tr><td>المشروع</td><td>{{ $project }}</td></tr>@endif
-            @if($campaign)<tr><td>الحملة</td><td>{{ $campaign }}</td></tr>@endif
+
             @if($story)<tr><td>القصة</td><td>{{ $story }}</td></tr>@endif
         </table>
     </div>

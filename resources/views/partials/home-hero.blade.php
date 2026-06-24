@@ -1,27 +1,14 @@
 <section class="hero-slider" id="home">
     <div class="swiper heroSwiper">
         <div class="swiper-wrapper">
-            @forelse($sliders as $slider)
-            <div class="swiper-slide hero-slide" @if($slider->image) style="--slide-bg: url('{{ asset('storage/'.$slider->image) }}')" @endif>
-                <div class="hero-slide__overlay"></div>
-                <div class="container hero-slide__content">
-                    <h1 class="hero-slide__title">{{ trans_field($slider, 'title') }}</h1>
-                    <p class="hero-slide__subtitle">{{ trans_field($slider, 'subtitle') }}</p>
-                    @if(trans_field($slider, 'button_text'))
-                    <a href="{{ $slider->button_link ?: '#donate' }}" class="btn btn--primary btn--lg">{{ trans_field($slider, 'button_text') }}</a>
-                    @endif
-                </div>
-            </div>
-            @empty
             <div class="swiper-slide hero-slide" style="--slide-bg: linear-gradient(135deg, #0d6b4f, #083b2b)">
                 <div class="hero-slide__overlay"></div>
                 <div class="container hero-slide__content">
                     <h1 class="hero-slide__title">{{ trans_field($s, 'hero_title') }}</h1>
                     <p class="hero-slide__subtitle">{{ trans_field($s, 'hero_subtitle') }}</p>
-                    <a href="#donate" class="btn btn--primary btn--lg">{{ __('common.donate_now') }}</a>
+                    <a href="{{ route('donate.page', ['locale' => $currentLocale]) }}" class="btn btn--primary btn--lg">{{ __('common.donate_now') }}</a>
                 </div>
             </div>
-            @endforelse
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next" style="left:20px!important;right:auto!important"></div>
@@ -40,21 +27,6 @@
                 <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:20px;font-size:0.8rem;font-weight:600"><i class="fas fa-check-circle" style="color:var(--color-primary)"></i> {{ __('common.audited') }}</span>
                 <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:20px;font-size:0.8rem;font-weight:600"><i class="fas fa-hand-holding-heart" style="color:var(--color-primary)"></i> {{ __('common.registered_charity') }}</span>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="quick-actions">
-    <div class="container">
-        <div class="quick-actions__grid">
-            @foreach($quickActions as $action)
-            <article class="action-card">
-                <div class="action-card__icon">{{ $action->icon }}</div>
-                <h3>{{ trans_field($action, 'title') }}</h3>
-                <p>{{ trans_field($action, 'description') }}</p>
-                <a href="{{ $action->link ?: '#donate' }}" class="action-card__link">{{ __('common.donate_now') }} <i class="fas fa-arrow-{{ $isRtl ? 'left' : 'right' }}"></i></a>
-            </article>
-            @endforeach
         </div>
     </div>
 </section>

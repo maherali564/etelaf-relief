@@ -58,4 +58,6 @@ return [
     'payment_methods' => 'Metode Pembayaran yang Diterima',
     'whatsapp' => 'WhatsApp',
     'all_rights' => 'Hak cipta dilindungi © Sahem',
+    'raised' => 'Terkumpul',
+    'goal' => 'dari target',
 ];

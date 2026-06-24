@@ -6,7 +6,6 @@ return [
     'seal' => 'D',
     'certifies' => 'This is to certify that',
     'has_donated' => 'has donated',
-    'to_campaign' => 'to support the campaign:',
     'to_project' => 'to support the project:',
     'to_story' => 'to support the story:',
     'on_date' => 'on',
