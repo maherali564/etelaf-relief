@@ -1,0 +1,15 @@
+# Security Contact
+Contact: mailto:security@etelafrelief.org
+Encryption: https://keys.openpgp.org/search?q=security@etelafrelief.org
+
+# Policy
+Policy: https://github.com/etelaf-relief/sahem/security/policy
+Hiring: https://etelafrelief.org/careers
+
+# Preferences
+Preferred-Languages: ar, en
+Canonical: https://etelafrelief.org/.well-known/security.txt
+Expires: 2027-06-09T23:59:59.000Z
+
+# Acknowledgments
+Acknowledgments: https://github.com/etelaf-relief/sahem/security/advisories

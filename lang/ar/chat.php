@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'start_title' => 'كيف يمكننا مساعدتك؟',
+    'start_desc' => 'مرحباً بك في خدمة الدردشة المباشرة. اترك بياناتك وسنقوم بالرد عليك في أقرب وقت.',
+    'name_placeholder' => 'الاسم الكامل',
+    'email_placeholder' => 'البريد الإلكتروني',
+    'start_btn' => 'بدء المحادثة',
+    'input_placeholder' => 'اكتب رسالتك...',
+    'typing' => 'يكتب...',
+    'visitor_typing' => 'الزائر يكتب...',
+    'end_chat' => 'إنهاء المحادثة',
+    'active' => 'نشط',
+    'waiting' => 'بانتظار',
+    'closed' => 'مغلقة',
+    'online' => 'متصل',
+    'offline' => 'غير متصل',
+    'admin_title' => 'لوحة الدردشة',
+    'select_session' => 'اختر محادثة',
+    'select_session_desc' => 'اختر جلسة من القائمة لبدء المحادثة',
+    'search_placeholder' => 'بحث عن زائر...',
+    'no_sessions' => 'لا توجد جلسات دردشة',
+    'anonymous' => 'زائر',
+    'page' => 'الصفحة',
+];

@@ -1,0 +1,85 @@
+{
+    "name": "baspa/larascan",
+    "description": "A security-focused static analysis package for Laravel applications",
+    "keywords": [
+        "laravel",
+        "security",
+        "static-analysis",
+        "sast",
+        "scanner",
+        "audit",
+        "csp",
+        "xss",
+        "sql-injection",
+        "dependency-scanning",
+        "owasp"
+    ],
+    "homepage": "https://github.com/baspa/larascan",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bas van Dinther",
+            "email": "hello@baspa.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/contracts": "^11.0||^12.0||^13.0",
+        "illuminate/console": "^11.0||^12.0||^13.0",
+        "illuminate/support": "^11.0||^12.0||^13.0",
+        "laravel/agent-detector": "^2.0",
+        "spatie/laravel-package-tools": "^1.16",
+        "nikic/php-parser": "^5.0",
+        "symfony/process": "^6.4||^7.0||^8.0",
+        "symfony/yaml": "^6.4||^7.0||^8.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.14",
+        "nunomaduro/collision": "^8.0",
+        "orchestra/testbench": "^9.0||^10.0||^11.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Baspa\\Larascan\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Baspa\\Larascan\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Baspa\\Larascan\\LarascanServiceProvider"
+            ],
+            "aliases": {
+                "Larascan": "Baspa\\Larascan\\Facades\\Larascan"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
