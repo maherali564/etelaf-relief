@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Playfair+Display:wght@400;500;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/extra.css') }}?v=12">
+    <link rel="stylesheet" href="{{ asset('css/extra.css') }}?v=18">
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     @livewireStyles
     @stack('head')

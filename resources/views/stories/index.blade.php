@@ -21,7 +21,6 @@
                     <p class="story-card__meta">{{ trans_field($story, 'person_name') }}{{ trans_field($story, 'age') ? ', '.trans_field($story, 'age').' '.__('common.age') : '' }}{{ trans_field($story, 'location') ? ' | '.trans_field($story, 'location') : '' }}</p>
                     <x-progress-bar :raised="$story->raised_amount ?? 0" :goal="$story->goal_amount" :label="true" />
                     <div class="story-card__actions">
-                        <a href="{{ route('stories.show', ['locale' => $currentLocale, 'id' => $story->id]) }}" class="btn btn--emerald btn--sm">{{ __('common.details') }}</a>
                         <a href="{{ route('stories.show', ['locale' => $currentLocale, 'id' => $story->id]) }}" class="btn btn--primary btn--sm">{{ __('common.contribute') }}</a>
                     </div>
                 </div>
