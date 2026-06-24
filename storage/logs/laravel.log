@@ -23290,3 +23290,123 @@ Stack trace:
 [2026-06-24 15:21:38] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
 [2026-06-24 15:21:38] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
 [2026-06-24 15:21:38] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:25:30] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:25:30] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:25:30] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:25:30] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:25:30] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:25:30] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:25:57] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:25:57] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:25:57] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:25:57] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:25:57] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:25:57] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:26:17] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:26:17] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:26:17] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:26:17] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:26:17] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:26:17] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:27:09] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:27:09] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:27:09] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:27:09] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:27:09] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:27:09] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:27:53] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:27:53] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:27:53] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:27:53] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:27:53] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:27:53] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:13] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:13] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:13] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:13] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:13] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:13] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:14] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:14] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:14] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:14] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:14] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:14] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:15] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:25] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:25] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:25] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:25] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:25] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:25] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:27] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:27] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:27] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:27] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:27] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:27] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:28] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:28] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:28] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:28] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:28] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:28] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:31] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:31] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:31] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:31] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:31] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:31] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:35] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:35] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:35] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:35] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:35] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:35] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:37] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:41] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:41] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:41] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:41] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:41] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:41] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:46] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:46] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:46] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:46] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:46] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:46] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:56] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:56] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:56] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:56] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:56] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:56] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
+[2026-06-24 15:28:57] production.WARNING: PHP ini settings security risk: expose_php, allow_url_fopen should be Off in production.  
+[2026-06-24 15:28:57] production.WARNING: Missing required config: STRIPE_KEY is empty in production.  
+[2026-06-24 15:28:57] production.WARNING: Missing required config: STRIPE_SECRET is empty in production.  
+[2026-06-24 15:28:57] production.WARNING: Missing required config: STRIPE_WEBHOOK_SECRET is empty in production.  
+[2026-06-24 15:28:57] production.WARNING: Missing required config: PAYPAL_CLIENT_ID is empty in production.  
+[2026-06-24 15:28:57] production.WARNING: Missing required config: PAYPAL_SECRET is empty in production.  
