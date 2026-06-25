@@ -1,8 +1,6 @@
 <?php
 
-use App\Exceptions\DonationException;
 use App\Exceptions\PaymentException;
-use App\Exceptions\WebhookException;
 use Illuminate\Validation\ValidationException;
 use App\Http\Middleware\ChatAccess;
 use App\Http\Middleware\SecurityHeaders;
@@ -90,22 +88,6 @@ return Application::configure(basePath: dirname(__DIR__))
          * يمكن تخصيص سلوك التسجيل أو الإبلاغ هنا.
          */
         $exceptions->reportable(function (PaymentException $e) {
-            //
-        });
-
-        /**
-         * تسجيل استثناءات Webhook (WebhookException).
-         * يمكن تخصيص سلوك التسجيل أو الإبلاغ هنا.
-         */
-        $exceptions->reportable(function (WebhookException $e) {
-            //
-        });
-
-        /**
-         * تسجيل استثناءات التبرع (DonationException).
-         * يمكن تخصيص سلوك التسجيل أو الإبلاغ هنا.
-         */
-        $exceptions->reportable(function (DonationException $e) {
             //
         });
 

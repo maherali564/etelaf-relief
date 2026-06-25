@@ -26,10 +26,9 @@
 
 namespace App\Services\Webhook;
 
-use App\Exceptions\WebhookException;
+use App\Exceptions\PaymentException;
 use App\Models\Donation;
 use App\Models\PaymentGateway;
-use App\Services\Payment\IdempotencyHelper;
 use App\Services\Payment\WiseService;
 use Illuminate\Support\Facades\Log;
 
@@ -83,7 +82,7 @@ class WiseWebhookService extends BaseWebhookService
         $event = $service->verifyWebhook($payload, $signature);
 
         if (empty($event)) {
-            throw new WebhookException('Invalid signature');
+            throw new PaymentException('Invalid signature');
         }
 
         $this->logWebhook($event['event_type'] ?? '', $payload);
@@ -119,24 +118,17 @@ class WiseWebhookService extends BaseWebhookService
     private function handleTransferCompleted(array $event): void
     {
         $transactionId = $event['data']['id'] ?? '';
-        $eventId = $event['id'] ?? '';
-
-        if (empty($eventId)) {
-            Log::warning('Wise webhook missing event id', ['transaction_id' => $transactionId]);
-
-            return;
-        }
 
         if (empty($transactionId)) {
-            return;
-        }
-
-        if (IdempotencyHelper::checkAndMark($eventId)) {
+            Log::warning('Wise webhook: missing transfer id');
             return;
         }
 
         $donation = $this->findDonationByTransactionId($transactionId);
         if (! $donation) {
+            Log::info('Wise webhook: unmatched transfer, requires manual confirmation', [
+                'transfer_id' => $transactionId,
+            ]);
             return;
         }
 

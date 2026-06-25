@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Donation;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -52,7 +53,7 @@ class DonationReviewService
 
         activity()
             ->performedOn($donation)
-            ->causedBy(auth()->user())
+            ->causedBy(User::find($adminId))
             ->withProperties(['old_status' => $oldStatus, 'new_status' => 'completed', 'admin_id' => $adminId])
             ->log('تم تأكيد التبرع');
 
@@ -91,7 +92,7 @@ class DonationReviewService
 
         activity()
             ->performedOn($donation)
-            ->causedBy(auth()->user())
+            ->causedBy(User::find($adminId))
             ->withProperties(['old_status' => $oldStatus, 'reason' => $reason, 'admin_id' => $adminId])
             ->log('تم رفض التبرع');
 

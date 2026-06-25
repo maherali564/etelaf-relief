@@ -108,7 +108,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $rate = fn ($perMinute) => app()->environment('testing') ? 999 : $perMinute;
-        RateLimiter::for('donations', fn (Request $request) => Limit::perMinute($rate(10))->by($request->ip()));
+        RateLimiter::for('donations', fn (Request $request) => Limit::perMinute($rate(5))->by($request->input('email', $request->ip())));
         RateLimiter::for('contact', fn (Request $request) => Limit::perMinute($rate(5))->by($request->ip()));
         RateLimiter::for('volunteer', fn (Request $request) => Limit::perMinute($rate(5))->by($request->ip()));
         RateLimiter::for('donor_register', fn (Request $request) => Limit::perMinute(app()->environment('testing') ? 100 : 3)->by($request->ip()));

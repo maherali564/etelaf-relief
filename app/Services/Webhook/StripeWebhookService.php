@@ -29,7 +29,7 @@
 
 namespace App\Services\Webhook;
 
-use App\Exceptions\WebhookException;
+use App\Exceptions\PaymentException;
 use App\Models\Donation;
 use App\Models\PaymentGateway;
 use App\Services\Payment\IdempotencyHelper;
@@ -85,7 +85,7 @@ class StripeWebhookService extends BaseWebhookService
 
         if (empty($signature)) {
             Log::warning('Stripe webhook: missing signature header');
-            throw new WebhookException('Missing signature');
+            throw new PaymentException('Missing signature');
         }
 
         $service = new StripeService($this->gateway->config ?? []);
@@ -94,7 +94,7 @@ class StripeWebhookService extends BaseWebhookService
             $event = $service->verifyWebhook($payload, $signature);
         } catch (\Exception $e) {
             Log::warning('Stripe webhook: '.$e->getMessage());
-            throw new WebhookException('Invalid signature');
+            throw new PaymentException('Invalid signature');
         }
 
         $this->logWebhook($event['type'] ?? '', $payload);

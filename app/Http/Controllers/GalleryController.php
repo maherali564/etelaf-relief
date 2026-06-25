@@ -50,12 +50,11 @@ class GalleryController extends Controller
                 }
                 if (!empty($project->videos)) {
                     foreach ($project->videos as $vid) {
-                        $thumb = 'thumbnails/' . pathinfo($vid, PATHINFO_FILENAME) . '.jpg';
                         $items[] = [
                             'media_type' => 'video',
                             'source_type' => 'project',
-                            'image' => $thumb,
-                            'thumbnail' => $thumb,
+                            'image' => null,
+                            'thumbnail' => null,
                             'video_id' => $vid,
                             'video_platform' => 'local',
                             'title' => trans_field($project, 'title'),
@@ -99,12 +98,11 @@ class GalleryController extends Controller
                 }
                 if (!empty($story->videos)) {
                     foreach ($story->videos as $vid) {
-                        $thumb = 'thumbnails/' . pathinfo($vid, PATHINFO_FILENAME) . '.jpg';
                         $items[] = [
                             'media_type' => 'video',
                             'source_type' => 'story',
-                            'image' => $thumb,
-                            'thumbnail' => $thumb,
+                            'image' => null,
+                            'thumbnail' => null,
                             'video_id' => $vid,
                             'video_platform' => 'local',
                             'title' => trans_field($story, 'title'),

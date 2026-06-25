@@ -90,11 +90,12 @@ class AdminReports extends Page
 
     public function getChartData(): array
     {
-        return Cache::remember("admin_reports_chart_{$this->dateFrom}_{$this->dateTo}_{$this->period}", 300, function () {
+        $period = in_array($this->period, ['monthly', 'yearly']) ? $this->period : 'monthly';
+        return Cache::remember("admin_reports_chart_{$this->dateFrom}_{$this->dateTo}_{$period}", 300, function () use ($period) {
             $query = Donation::completed()
                 ->whereBetween('created_at', [$this->dateFrom, $this->dateTo])
                 ->select(
-                    DB::raw($this->period === 'yearly' ? "strftime('%Y', created_at) as period" : "strftime('%Y-%m', created_at) as period"),
+                    DB::raw($period === 'yearly' ? "strftime('%Y', created_at) as period" : "strftime('%Y-%m', created_at) as period"),
                     DB::raw('SUM(amount) as total'),
                     DB::raw('COUNT(*) as count')
                 )

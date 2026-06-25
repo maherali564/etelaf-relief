@@ -120,7 +120,7 @@ $donorCount = $donations->pluck('donor_name')->unique()->filter()->count();
                     </div>
 
                     <div class="project-detail-card__desc">
-                        {!! trans_field($story, 'content') !!}
+                        {!! safeHtml(trans_field($story, 'content')) !!}
                     </div>
 
                     @php $shareUrl = urlencode(url()->current()); $shareText = urlencode(trans_field($story, 'title')); @endphp

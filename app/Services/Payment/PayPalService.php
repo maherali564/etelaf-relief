@@ -368,20 +368,22 @@ class PayPalService
             return false;
         }
 
-        $verificationSignature = ($headers['PAYPAL-AUTH-ALGO'] ?? '')
-            .'|'.($headers['PAYPAL-CERT-URL'] ?? '')
-            .'|'.($headers['PAYPAL-TRANSMISSION-ID'] ?? '')
-            .'|'.($headers['PAYPAL-TRANSMISSION-SIG'] ?? '')
-            .'|'.($headers['PAYPAL-TRANSMISSION-TIME'] ?? '');
+        // ponytail: $request->header() returns lowercase keys, PayPal uses UPPERCASE
+        $h = array_change_key_case($headers, CASE_UPPER);
+        $authAlgo = $h['PAYPAL-AUTH-ALGO'] ?? '';
+        $certUrl = $h['PAYPAL-CERT-URL'] ?? '';
+        $transmissionId = $h['PAYPAL-TRANSMISSION-ID'] ?? '';
+        $transmissionSig = $h['PAYPAL-TRANSMISSION-SIG'] ?? '';
+        $transmissionTime = $h['PAYPAL-TRANSMISSION-TIME'] ?? '';
 
         $response = Http::timeout(10)->connectTimeout(5)->withToken($token)->post(
             "{$this->baseUrl}/v1/notifications/verify-webhook-signature",
             [
-                'auth_algo' => $headers['PAYPAL-AUTH-ALGO'] ?? '',
-                'cert_url' => $headers['PAYPAL-CERT-URL'] ?? '',
-                'transmission_id' => $headers['PAYPAL-TRANSMISSION-ID'] ?? '',
-                'transmission_sig' => $headers['PAYPAL-TRANSMISSION-SIG'] ?? '',
-                'transmission_time' => $headers['PAYPAL-TRANSMISSION-TIME'] ?? '',
+                'auth_algo' => $authAlgo,
+                'cert_url' => $certUrl,
+                'transmission_id' => $transmissionId,
+                'transmission_sig' => $transmissionSig,
+                'transmission_time' => $transmissionTime,
                 'webhook_id' => $webhookId,
                 'webhook_event' => json_decode($payload, true),
             ]

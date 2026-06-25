@@ -59,9 +59,9 @@ class HomeCacheObserver
     {
         $keys = match (true) {
             $model instanceof Statistic => ['home.achievement_stats', 'home.humanitarian_stats'],
-            $model instanceof Project => ['home.projects'],
+            $model instanceof Project => ['home.projects', 'gallery_items'],
             $model instanceof Program => ['home.programs'],
-            $model instanceof Story => ['home.stories'],
+            $model instanceof Story => ['home.stories', 'gallery_items'],
             $model instanceof PaymentMethod => ['home.payment_methods'],
             $model instanceof Cryptocurrency => ['home.cryptocurrencies'],
             $model instanceof Testimonial => ['home.testimonials'],

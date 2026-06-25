@@ -43,15 +43,17 @@
 
     <!-- Main Navigation -->
     <div class="header__main" id="headerMain">
-        <!-- Logo + Site Name -->
-        <a href="{{ route('home', ['locale' => $currentLocale]) }}" class="header__logo" id="headerLogo">
-            @php $logoUrl = (isset($s->logos[$currentLocale]) && $s->logos[$currentLocale]) ? (str_starts_with($s->logos[$currentLocale], '/') ? $s->logos[$currentLocale] : Storage::url($s->logos[$currentLocale])) : ($s->logo ? (str_starts_with($s->logo, '/') ? $s->logo : Storage::url($s->logo)) : '/images/sahemlogo.svg'); @endphp
-            <img src="{{ $logoUrl }}" alt="{{ trans_field($s, 'site_name') ?? 'Sahem' }}">
+        <!-- Brand Container (left) -->
+        <div class="header__brand">
+            <a href="{{ route('home', ['locale' => $currentLocale]) }}" class="header__logo" id="headerLogo">
+                @php $logoUrl = (isset($s->logos[$currentLocale]) && $s->logos[$currentLocale]) ? (str_starts_with($s->logos[$currentLocale], '/') ? $s->logos[$currentLocale] : Storage::url($s->logos[$currentLocale])) : ($s->logo ? (str_starts_with($s->logo, '/') ? $s->logo : Storage::url($s->logo)) : '/images/sahemlogo.svg'); @endphp
+                <img src="{{ $logoUrl }}" alt="{{ trans_field($s, 'site_name') ?? 'Sahem' }}">
+            </a>
             <span class="header__brand-text">{{ trans_field($s, 'site_name') ?? 'ساهم للإغاثة و التنمية' }}</span>
-        </a>
+        </div>
 
-        <!-- Desktop Nav -->
-        <nav class="nav" id="desktopNav">
+        <!-- Links Container (right) -->
+        <div class="header__links" id="desktopNav">
             <a href="{{ route('home', ['locale' => $currentLocale]) }}" class="nav__link">{{ __('common.nav_home') }}</a>
             <a href="{{ route('about.index', ['locale' => $currentLocale]) }}" class="nav__link">{{ __('common.nav_about') }}</a>
             <div class="nav__dropdown">
@@ -79,39 +81,42 @@
             <a href="{{ route('gallery.index', ['locale' => $currentLocale]) }}" class="nav__link">{{ __('common.nav_gallery') }}</a>
             <a href="{{ route('transparency.index', ['locale' => $currentLocale]) }}" class="nav__link">{{ __('common.transparency') }}</a>
             <a href="{{ route('volunteer.register', ['locale' => $currentLocale]) }}" class="nav__link">{{ __('volunteer.nav') }}</a>
-
-            <!-- Mobile toggle -->
-            <button class="nav__mobile-toggle" onclick="toggleMobileMenu()" type="button" aria-label="Menu">
-                <i class="fas fa-bars" style="font-size:1.3rem"></i>
-            </button>
-        </nav>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="nav__mobile" id="mobileMenu">
-        <div class="nav__mobile-panel">
-            <button class="nav__mobile-close" onclick="toggleMobileMenu()">
-                <i class="fas fa-times"></i>
-            </button>
-            <a href="{{ route('home', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('common.nav_home') }}</a>
-            <a href="{{ route('about.index', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('common.nav_about') }}</a>
-            <a href="{{ route('programs.index', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('common.nav_programs') }}</a>
-            <a href="{{ route('projects.index', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('common.nav_projects') }}</a>
-            <a href="{{ route('stories.index', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('common.nav_stories') }}</a>
-            <a href="{{ route('gallery.index', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('common.nav_gallery') }}</a>
-            <a href="{{ route('transparency.index', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('common.transparency') }}</a>
-            <a href="{{ route('volunteer.register', ['locale' => $currentLocale]) }}" class="nav__mobile-link">{{ __('volunteer.nav') }}</a>
-            <div style="margin-top:16px;padding-top:16px;border-top:1px solid #e4e4e7">
-                <a href="{{ route('donate.page', ['locale' => $currentLocale]) }}" class="btn btn--primary btn--block">{{ __('common.donate_now') }}</a>
-            </div>
         </div>
+
+        <!-- Mobile toggle (outside both containers) -->
+        <button class="nav-toggle" onclick="toggleMobileMenu()" type="button" aria-label="Menu" id="navToggleBtn">
+            <i class="fas fa-bars" id="navToggleIcon"></i>
+        </button>
     </div>
 </header>
+
+<!-- Mobile drawer (off-canvas, slides from right) -->
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__header">
+        <span class="mobile-drawer__title">{{ trans_field($s, 'site_name') ?? 'ساهم للإغاثة و التنمية' }}</span>
+        <button class="mobile-drawer__close" onclick="toggleMobileMenu()" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <nav class="mobile-drawer__nav">
+        <a href="{{ route('home', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('common.nav_home') }}</a>
+        <a href="{{ route('about.index', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('common.nav_about') }}</a>
+        <a href="{{ route('programs.index', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('common.nav_programs') }}</a>
+        <a href="{{ route('projects.index', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('common.nav_projects') }}</a>
+        <a href="{{ route('stories.index', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('common.nav_stories') }}</a>
+        <a href="{{ route('gallery.index', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('common.nav_gallery') }}</a>
+        <a href="{{ route('transparency.index', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('common.transparency') }}</a>
+        <a href="{{ route('volunteer.register', ['locale' => $currentLocale]) }}" class="mobile-drawer__link">{{ __('volunteer.nav') }}</a>
+        <div class="mobile-drawer__cta">
+            <a href="{{ route('donate.page', ['locale' => $currentLocale]) }}" class="btn btn--primary btn--block">{{ __('common.donate_now') }}</a>
+        </div>
+    </nav>
+</div>
 
 <script>
 var header = document.getElementById('header');
 var headerLogo = document.getElementById('headerLogo');
-var headerBrand = document.getElementById('headerBrand');
 var topBar = document.getElementById('topBar');
 
 function updateHeader() {
@@ -135,11 +140,16 @@ document.addEventListener('click', function(e) {
 });
 
 function toggleMobileMenu() {
-    var menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('nav__mobile--open');
+    var isOpen = !document.getElementById('mobileDrawer').classList.contains('open');
+    document.getElementById('mobileDrawer').classList.toggle('open');
+    document.getElementById('mobileDrawerOverlay').classList.toggle('open');
+    document.getElementById('navToggleIcon').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+    document.getElementById('topBar').style.display = isOpen ? 'none' : '';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
 }
+document.getElementById('mobileDrawerOverlay').addEventListener('click', toggleMobileMenu);
 
-function setCurrency(code) {
+function setCurrency(code) { /* kept from original */
     var symbols = { USD: '$', EUR: '€', GBP: '£', TRY: '₺' };
     document.getElementById('currencySymbol').textContent = symbols[code] || '$';
     document.getElementById('currencyCode').textContent = code;

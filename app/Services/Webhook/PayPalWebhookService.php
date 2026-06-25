@@ -27,7 +27,7 @@
 
 namespace App\Services\Webhook;
 
-use App\Exceptions\WebhookException;
+use App\Exceptions\PaymentException;
 use App\Models\Donation;
 use App\Models\PaymentGateway;
 use App\Services\Payment\IdempotencyHelper;
@@ -83,7 +83,7 @@ class PayPalWebhookService extends BaseWebhookService
         $verified = $service->verifyWebhook($payload, $headers);
 
         if (! $verified) {
-            throw new WebhookException('Invalid signature');
+            throw new PaymentException('Invalid signature');
         }
 
         $data = json_decode($payload, true);

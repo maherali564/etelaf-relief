@@ -20,14 +20,15 @@
     <meta property="og:locale" content="{{ $currentLocale === 'ar' ? 'ar_AR' : $currentLocale . '_' . strtoupper($currentLocale) }}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="icon" href="{{ asset('storage/' . (($s->logos[$currentLocale] ?? $s->logo ?? 'images/sahemlogo.svg'))) }}">
     <script type="application/ld+json">
     { "@context": "https://schema.org", "@type": "NGO", "name": "{{ trans_field($s, 'site_name', $currentLocale) ?? config('app.name') }}", "description": "{{ trans_field($s, 'tagline', $currentLocale) ?? '' }}", "url": "{{ url('/') }}", "logo": "{{ asset('storage/' . (($s->logos[$currentLocale] ?? $s->logo ?? ''))) }}", "foundingDate": "2024" }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Playfair+Display:wght@400;500;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/extra.css') }}?v=18">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=2">
+    <link rel="stylesheet" href="{{ asset('css/extra.css') }}?v=34">
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     @livewireStyles
     @stack('head')

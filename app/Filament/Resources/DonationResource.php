@@ -296,39 +296,10 @@ class DonationResource extends Resource
                 Tables\Actions\Action::make('export_csv')->label(__('filament.resources.donation.export_csv'))
                     ->icon('heroicon-o-arrow-down-tray')
                     ->color('success')
-                    ->action(function () {
-                        $headers = [
-                            'Content-Type' => 'text/csv; charset=utf-8',
-                            'Content-Disposition' => 'attachment; filename="donations-'.now()->format('Y-m-d').'.csv"',
-                        ];
-                        $callback = function () {
-                            $file = fopen('php://output', 'w');
-                            fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
-                            fputcsv($file, [
-                                __('filament.resources.testimonial.column_donor'),
-                                __('filament.resources.newsletter.column_email'),
-                                __('filament.widgets.latest_donations.column_amount'),
-                                __('filament.resources.donation.column_method'),
-                                __('filament.widgets.latest_donations.column_status'),
-                                __('filament.resources.donation.filter_date'),
-                            ]);
-                            Donation::query()->orderByDesc('created_at')->chunk(200, function ($donations) use ($file) {
-                                foreach ($donations as $d) {
-                                    fputcsv($file, [
-                                        "\t".$d->donor_name,
-                                        "\t".$d->email,
-                                        number_format($d->amount, 2),
-                                        $d->paymentMethod?->name ?? '—',
-                                        $d->status,
-                                        $d->created_at->format('Y-m-d H:i'),
-                                    ]);
-                                }
-                            });
-                            fclose($file);
-                        };
-
-                        return response()->stream($callback, 200, $headers);
-                    }),
+                    ->action(fn () => self::exportCsvResponse(
+                        'donations-'.now()->format('Y-m-d').'.csv',
+                        Donation::query()->orderByDesc('created_at')
+                    )),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -341,37 +312,10 @@ class DonationResource extends Resource
                     Tables\Actions\BulkAction::make('export_selected_csv')->label(__('filament.resources.donation.export_selected'))
                         ->icon('heroicon-o-arrow-down-tray')
                         ->color('info')
-                        ->action(function ($records) {
-                            $headers = [
-                                'Content-Type' => 'text/csv; charset=utf-8',
-                                'Content-Disposition' => 'attachment; filename="donations-selected-'.now()->format('Y-m-d').'.csv"',
-                            ];
-                            $callback = function () use ($records) {
-                                $file = fopen('php://output', 'w');
-                                fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
-                                fputcsv($file, [
-                                    __('filament.resources.testimonial.column_donor'),
-                                    __('filament.resources.newsletter.column_email'),
-                                    __('filament.widgets.latest_donations.column_amount'),
-                                    __('filament.resources.donation.column_method'),
-                                    __('filament.widgets.latest_donations.column_status'),
-                                    __('filament.resources.donation.filter_date'),
-                                ]);
-                                foreach ($records as $d) {
-                                    fputcsv($file, [
-                                        "\t".$d->donor_name,
-                                        "\t".$d->email,
-                                        number_format($d->amount, 2),
-                                        $d->paymentMethod?->name ?? '—',
-                                        $d->status,
-                                        $d->created_at->format('Y-m-d H:i'),
-                                    ]);
-                                }
-                                fclose($file);
-                            };
-
-                            return response()->stream($callback, 200, $headers);
-                        }),
+                        ->action(fn ($records) => self::exportCsvResponse(
+                            'donations-selected-'.now()->format('Y-m-d').'.csv',
+                            $records
+                        )),
                 ]),
             ]);
     }
@@ -390,6 +334,42 @@ class DonationResource extends Resource
      *    - array ← مسارات الصفحات مع روابطها
      * ──────────────────────────────────────────────────────────────
      */
+    private static function exportCsvResponse(string $filename, \Illuminate\Database\Eloquent\Builder|\Illuminate\Support\Collection $query): \Illuminate\Http\Response
+    {
+        $headers = [
+            'Content-Type' => 'text/csv; charset=utf-8',
+            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+        ];
+
+        $callback = function () use ($query) {
+            $file = fopen('php://output', 'w');
+            fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
+            fputcsv($file, [
+                __('filament.resources.testimonial.column_donor'),
+                __('filament.resources.newsletter.column_email'),
+                __('filament.widgets.latest_donations.column_amount'),
+                __('filament.resources.donation.column_method'),
+                __('filament.widgets.latest_donations.column_status'),
+                __('filament.resources.donation.filter_date'),
+            ]);
+
+            $items = $query instanceof \Illuminate\Support\Collection ? $query : $query->cursor();
+            foreach ($items as $d) {
+                fputcsv($file, [
+                    "\t".$d->donor_name,
+                    "\t".$d->email,
+                    number_format($d->amount, 2),
+                    $d->paymentMethod?->name ?? '—',
+                    $d->status,
+                    $d->created_at->format('Y-m-d H:i'),
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
     public static function getPages(): array
     {
         return [

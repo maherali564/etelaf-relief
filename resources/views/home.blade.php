@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @php $s = $settings; @endphp
 @php
-    $dictAr = ['eyebrow'=>__('home.eyebrow'),'title'=>'حين تساهم، يصل <em>أثرك</em> إلى حيث الحاجة أكبر','lead'=>__('home.hero_lead'),'cta_donate'=>__('common.donate_now'),'cta_explore'=>__('home.explore_work')];
-    $dictEn = ['eyebrow'=>'','title'=>'When you give, your <em>impact</em> reaches where it\'s needed most','lead'=>'','cta_donate'=>'Donate Now','cta_explore'=>'Explore Our Work'];
+    $dictAr = ['eyebrow'=>__('home.eyebrow'),'title'=>'حين تساهم، يصل أثرك إلى حيث الحاجة أكبر','lead'=>__('home.hero_lead'),'cta_donate'=>__('common.donate_now'),'cta_explore'=>__('home.explore_work')];
+    $dictEn = ['eyebrow'=>'','title'=>'When you give, your impact reaches where it\'s needed most','lead'=>'','cta_donate'=>'Donate Now','cta_explore'=>'Explore Our Work'];
 @endphp
 
 @section('content')
@@ -17,7 +17,7 @@
             @if($currentLocale === 'ar' && !empty($urgentNote))
             <div class="hero__note"><i class="fas fa-circle" style="font-size:6px;color:var(--gold)"></i> {{ $urgentNote }}</div>
             @endif
-            <h1 class="hero__title">{!! $currentLocale === 'ar' ? $dictAr['title'] : $dictEn['title'] !!}</h1>
+            <h1 class="hero__title">{{ $currentLocale === 'ar' ? $dictAr['title'] : $dictEn['title'] }}</h1>
             <p class="hero__desc">{{ $currentLocale === 'ar' ? $dictAr['lead'] : ($heroSubtitle ?? __('home.hero_lead')) }}</p>
             <div class="hero__actions">
                 <a href="{{ route('donate.page', ['locale' => $currentLocale]) }}" class="btn btn--primary"><i class="fas fa-heart"></i> {{ $currentLocale === 'ar' ? $dictAr['cta_donate'] : $dictEn['cta_donate'] }}</a>

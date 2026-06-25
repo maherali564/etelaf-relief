@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\WebhookException;
+use App\Exceptions\PaymentException;
 use App\Models\PaymentGateway;
 use App\Services\Webhook\PayPalWebhookService;
 use App\Services\Webhook\StripeWebhookService;
@@ -156,7 +156,7 @@ class WebhookController extends Controller
             $result = $service->handle($request->getContent(), $request->header());
 
             return response()->json($result);
-        } catch (WebhookException $e) {
+        } catch (PaymentException $e) {
             Log::warning(ucfirst("{$driver} webhook validation failed"), ['error' => $e->getMessage()]);
 
             return response()->json(['error' => $e->getMessage()], 400);
